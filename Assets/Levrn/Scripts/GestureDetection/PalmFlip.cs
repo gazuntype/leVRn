@@ -4,7 +4,7 @@ using Leap.Unity;
 
 public class PalmFlip : PalmDirectionDetector {
 	public float flipSpeed;
-	Transform dataTracker;
+	public Transform dataTracker;
 	Vector3 transformData;
 	int detectedMovement;//1: leftFlip, 2: pinch, 3: rightFlip
 	public int inputDetectedMovement;
@@ -12,7 +12,6 @@ public class PalmFlip : PalmDirectionDetector {
 	bool countFlipTime;
 
 	void Start () {
-		dataTracker = GameObject.Find("DataTracker").GetComponent<Transform>();
 	}
 	
 	// Update is called once per frame
