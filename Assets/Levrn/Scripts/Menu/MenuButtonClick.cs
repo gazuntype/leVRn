@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MenuButtonClick : MonoBehaviour {
-
+public class MenuButtonClick : MonoBehaviour
+{
+	[HideInInspector]
+	public static GameObject button;
+	[HideInInspector]
+	public static bool buttonPressed = false;
 	// Use this for initialization
 	void Start () {
 	
@@ -14,6 +18,7 @@ public class MenuButtonClick : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
-		Debug.Log(other.gameObject.name);
+		buttonPressed = true;
+		button = other.gameObject;
 	}
 }

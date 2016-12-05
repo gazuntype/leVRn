@@ -25,26 +25,36 @@ public class MenuSpawn : MonoBehaviour
 		trackedData = (int)trackedTransform.x;
 		if (trackedData == 1)
 		{
-			leftHandMenu.gameObject.SetActive(true);
-			leftHandMenu.position = leftPalm.position + new Vector3(0, 0, 0.1f);
-			foreach (Transform child in leftHandMenu)
-			{
-				child.LookAt(mainCamera);
-			}
+			SpawnLeftHandMenu();
 		}
 		else if (trackedData == 2)
 		{
-			rightHandMenu.gameObject.SetActive(true);
-			rightHandMenu.position = rightPalm.position + new Vector3(0, 0, 0.1f);
-			foreach (Transform child in rightHandMenu)
-			{
-				child.LookAt(mainCamera);
-			}
+			SpawnRightHandMenu();
 		}
 		else
 		{
 			rightHandMenu.gameObject.SetActive(false);
 			leftHandMenu.gameObject.SetActive(false);
+		}
+	}
+
+	void SpawnLeftHandMenu()
+	{
+		leftHandMenu.gameObject.SetActive(true);
+		leftHandMenu.position = leftPalm.position + new Vector3(0, 0, 0.1f);
+		foreach (Transform child in leftHandMenu)
+		{
+			child.LookAt(mainCamera);
+		}
+	}
+
+	void SpawnRightHandMenu()
+	{
+		rightHandMenu.gameObject.SetActive(true);
+		rightHandMenu.position = rightPalm.position + new Vector3(0, 0, 0.1f);
+		foreach (Transform child in rightHandMenu)
+		{
+			child.LookAt(mainCamera);
 		}
 	}
 }
