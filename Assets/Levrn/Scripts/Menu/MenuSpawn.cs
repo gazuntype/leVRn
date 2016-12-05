@@ -27,13 +27,19 @@ public class MenuSpawn : MonoBehaviour
 		{
 			leftHandMenu.gameObject.SetActive(true);
 			leftHandMenu.position = leftPalm.position + new Vector3(0, 0, 0.1f);
-			leftHandMenu.LookAt(mainCamera);
+			foreach (Transform child in leftHandMenu)
+			{
+				child.LookAt(mainCamera);
+			}
 		}
 		else if (trackedData == 2)
 		{
 			rightHandMenu.gameObject.SetActive(true);
 			rightHandMenu.position = rightPalm.position + new Vector3(0, 0, 0.1f);
-			rightHandMenu.LookAt(mainCamera);
+			foreach (Transform child in rightHandMenu)
+			{
+				child.LookAt(mainCamera);
+			}
 		}
 		else
 		{
