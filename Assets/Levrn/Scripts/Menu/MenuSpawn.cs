@@ -44,7 +44,7 @@ public class MenuSpawn : MonoBehaviour
 		leftHandMenu.position = leftPalm.position + new Vector3(0, 0, 0.1f);
 		foreach (Transform child in leftHandMenu)
 		{
-			child.LookAt(mainCamera);
+			child.eulerAngles = new Vector3(0, leftPalm.eulerAngles.y, 0);
 		}
 	}
 
@@ -54,7 +54,7 @@ public class MenuSpawn : MonoBehaviour
 		rightHandMenu.position = rightPalm.position + new Vector3(0, 0, 0.1f);
 		foreach (Transform child in rightHandMenu)
 		{
-			child.LookAt(mainCamera);
+			child.eulerAngles = new Vector3(0, rightPalm.eulerAngles.y, 0);
 		}
 	}
 }
