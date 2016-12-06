@@ -41,20 +41,20 @@ public class MenuSpawn : MonoBehaviour
 	void SpawnLeftHandMenu()
 	{
 		leftHandMenu.gameObject.SetActive(true);
-		leftHandMenu.position = leftPalm.position + new Vector3(0, 0, 0.1f);
+		leftHandMenu.position = leftPalm.position;
 		foreach (Transform child in leftHandMenu)
 		{
-			child.eulerAngles = new Vector3(0, leftPalm.eulerAngles.y, 0);
+			child.LookAt(mainCamera);
 		}
 	}
 
 	void SpawnRightHandMenu()
 	{
 		rightHandMenu.gameObject.SetActive(true);
-		rightHandMenu.position = rightPalm.position + new Vector3(0, 0, 0.1f);
+		rightHandMenu.position = rightPalm.position;
 		foreach (Transform child in rightHandMenu)
 		{
-			child.eulerAngles = new Vector3(0, rightPalm.eulerAngles.y, 0);
+			child.LookAt(mainCamera);
 		}
 	}
 }
