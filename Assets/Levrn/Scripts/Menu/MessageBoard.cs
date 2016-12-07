@@ -24,5 +24,11 @@ public class MessageBoard : MonoBehaviour {
 			index += 1;
 			MenuButtonClick.buttonPressed = false;
 		}
+
+		if (MenuSpawn.test)
+		{
+			log[index].text = "Ah I work";
+			index += 1;
+		}
 	}
 }

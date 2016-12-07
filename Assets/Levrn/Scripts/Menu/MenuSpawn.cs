@@ -9,6 +9,7 @@ public class MenuSpawn : MonoBehaviour
 	public Transform rightPalm;
 	public Transform mainCamera;
 	public Transform dataTracker;
+	public static bool test = false;
 	Vector3 trackedTransform;
 	int trackedData;
 	// Use this for initialization
@@ -42,6 +43,7 @@ public class MenuSpawn : MonoBehaviour
 	{
 		leftHandMenu.gameObject.SetActive(true);
 		leftHandMenu.position = leftPalm.position;
+		test = true;
 		foreach (Transform child in leftHandMenu)
 		{
 			child.LookAt(mainCamera);
