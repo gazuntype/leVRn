@@ -50,6 +50,6 @@ public class PalmFlip : PalmDirectionDetector {
 
 	public void SetDataTracker(){
 		transformData = new Vector3(detectedMovement, 0, 0);
-		dataTracker.position = transformData;
+		dataTracker.localPosition = transformData;
 	}
 }

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class MessageBoard : MonoBehaviour {
 	public Text[] log;
+	Transform dataTracker;
 	int index;
 	void Start()
 	{
@@ -18,17 +19,37 @@ public class MessageBoard : MonoBehaviour {
 
 	void AddLog()
 	{
-		if (MenuButtonClick.buttonPressed)
+		if (dataTracker == null)
 		{
-			log[index].text = MenuButtonClick.button.name + "()";
-			index += 1;
-			MenuButtonClick.buttonPressed = false;
+			dataTracker = GameObject.Find("DataTracker").GetComponent<Transform>();
 		}
-
-		if (MenuSpawn.test)
+		switch ((int)dataTracker.localPosition.y)
 		{
-			log[index].text = "Ah I work";
-			index += 1;
+			case 1:
+				log[index].text = "moveForward()";
+				dataTracker.localPosition = new Vector3(0, 0, 0);
+				index++;
+				break;
+			case 2:
+				log[index].text = "moveLeft()";
+				dataTracker.localPosition = new Vector3(0, 0, 0);
+				index++;
+				break;
+			case 3:
+				log[index].text = "moveRight()";
+				dataTracker.localPosition = new Vector3(0, 0, 0);
+				index++;
+				break;
+			case 4:
+				log[index].text = "jump()";
+				dataTracker.localPosition = new Vector3(0, 0, 0);
+				index++;
+				break;
+			case 5:
+				log[index].text = "reset()";
+				dataTracker.localPosition = new Vector3(0, 0, 0);
+				index++;
+				break;
 		}
 	}
 }
