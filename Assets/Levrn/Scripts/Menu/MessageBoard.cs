@@ -21,6 +21,7 @@ public class MessageBoard : MonoBehaviour {
 		if (MenuButtonClick.buttonPressed)
 		{
 			log[index].text = MenuButtonClick.button.name + "()";
+			index++;
 		}
 	}
 }
