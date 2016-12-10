@@ -2,10 +2,13 @@
 using System.Collections;
 
 public class FingerRayCast : MonoBehaviour {
-
 	// Use this for initialization
-	void Start () {
-	
+	GameObject[] button;
+	IEnumerator buttonCoroutine;
+
+	void OnEnable () {
+		buttonCoroutine = CheckButtons();
+		StartCoroutine(buttonCoroutine);
 	}
 	
 	// Update is called once per frame
@@ -21,9 +24,33 @@ public class FingerRayCast : MonoBehaviour {
 		{
 			if (hit.collider.gameObject.tag == "button")
 			{
-				Debug.Log(hit.collider.gameObject.name);
-				hit.transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+				Animator anim;
+				anim = hit.collider.gameObject.GetComponent<Animator>();
+				anim.SetBool("isHover", true);
+			}
+			else {
+				foreach (GameObject b in button)
+				{
+					Animator anim;
+					anim = b.GetComponent<Animator>();
+					anim.SetBool("isHover", false);
+				}
 			}
 		}
+		else {
+			foreach (GameObject b in button)
+			{
+				Animator anim;
+				anim = b.GetComponent<Animator>();
+				anim.SetBool("isHover", false);
+			}
+		}
+	}
+
+	IEnumerator CheckButtons()
+	{
+		button = GameObject.FindGameObjectsWithTag("button");
+		Debug.Log(button);
+		yield return new WaitForSeconds(1);
 	}
 }
