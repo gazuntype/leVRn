@@ -20,9 +20,12 @@ public class MessageBoard : MonoBehaviour {
 	{
 		if (MenuButtonClick.buttonPressed)
 		{
-			log[index].text = MenuButtonClick.button.name + "()";
-			MenuButtonClick.buttonPressed = false;
-			index++;
+			if (MenuButtonClick.button.tag == "functionButton")
+			{
+				log[index].text = MenuButtonClick.button.name + "()";
+				MenuButtonClick.buttonPressed = false;
+				index++;
+			}
 		}
 	}
 }

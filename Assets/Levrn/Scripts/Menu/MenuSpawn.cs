@@ -41,7 +41,7 @@ public class MenuSpawn : MonoBehaviour
 	void SpawnLeftHandMenu()
 	{
 		leftHandMenu.gameObject.SetActive(true);
-		leftHandMenu.position = leftPalm.position - (leftPalm.right * 0.05f) - (leftHandMenu.forward * 0.15f);
+		leftHandMenu.position = leftPalm.position - (leftPalm.right * 0.05f) - (leftHandMenu.forward * 0.15f) + (leftHandMenu.up * 0.1f);
 		leftHandMenu.LookAt(mainCamera);
 	}
 
