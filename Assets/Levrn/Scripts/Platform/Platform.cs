@@ -42,7 +42,7 @@ namespace LevrnScripts
 			this.layout = layout;
 		}
 
-		public static Platform CreatePlatform(Platform platform, Transform worldLocation)
+		public static Platform CreatePlatform(Platform platform, Transform worldLocation, GameObject player)
 		{
 			foreach (Square square in platform.layout.squares)
 			{
@@ -63,10 +63,40 @@ namespace LevrnScripts
 						break;
 				}
 			}
+			GameObject.Instantiate(player);
+			player.transform.localScale = new Vector3(platform.layout.squares[0].squareSize.x, platform.layout.squares[0].squareSize.x, platform.layout.squares[0].squareSize.x);
+			player.transform.position = GameObject.FindGameObjectWithTag("Start").transform.position + new Vector3(0, player.GetComponent<Renderer>().bounds.extents.y, 0);
 			return platform;
 		}
 
-		public static Platform CreatePlatform(Platform platform, GameObject cube, Transform worldLocation)
+		public static Platform CreatePlatform(Platform platform, GameObject player, Transform worldLocation)
+		{
+			foreach (Square square in platform.layout.squares)
+			{
+				GameObject primitiveSquare = GameObject.CreatePrimitive(PrimitiveType.Cube);
+				primitiveSquare.transform.localScale = square.squareSize;
+				primitiveSquare.transform.parent = worldLocation;
+				primitiveSquare.transform.localPosition = Vector3.Scale(new Vector3(square.positionx, 0, square.positiony), square.squareSize);
+				switch (square.type)
+				{
+					case SquareType.Normal:
+						primitiveSquare.tag = "Normal";
+						break;
+					case SquareType.Start:
+						primitiveSquare.tag = "Start";
+						break;
+					case SquareType.Mystery:
+						primitiveSquare.tag = "Mystery";
+						break;
+				}
+			}
+			GameObject.Instantiate(player);
+			player.transform.localScale = new Vector3(platform.layout.squares[0].squareSize.x, platform.layout.squares[0].squareSize.x, platform.layout.squares[0].squareSize.x);
+			player.transform.position = GameObject.FindGameObjectWithTag("Start").transform.position + new Vector3(0, player.GetComponent<Renderer>().bounds.extents.y, 0);
+			return platform;
+		}
+
+		public static Platform CreatePlatform(Platform platform, GameObject cube, GameObject player, Transform worldLocation)
 		{
 			foreach (Square square in platform.layout.squares)
 			{
@@ -86,6 +116,9 @@ namespace LevrnScripts
 						break;
 				}
 			}
+			GameObject.Instantiate(player);
+			player.transform.localScale = new Vector3(platform.layout.squares[0].squareSize.x, platform.layout.squares[0].squareSize.x, platform.layout.squares[0].squareSize.x);
+			player.transform.position = GameObject.FindGameObjectWithTag("Start").transform.position + new Vector3(0, player.GetComponent<Renderer>().bounds.extents.y, 0);
 			return platform;
 		}
 	}

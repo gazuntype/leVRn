@@ -42,7 +42,10 @@ public class FingerRayCast : MonoBehaviour {
 			{
 				Animator anim;
 				anim = b.GetComponent<Animator>();
-				anim.SetBool("isHover", false);
+				if (anim.isInitialized)
+				{
+					anim.SetBool("isHover", false);
+				}
 			}
 		}
 	}

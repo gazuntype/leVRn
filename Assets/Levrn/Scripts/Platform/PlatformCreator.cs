@@ -8,6 +8,7 @@ public class PlatformCreator : MonoBehaviour {
 	PlatformLayout platformLayout;
 	Platform platform;
 	public Transform worldLocation;
+	public GameObject pawn;
 
 	// Use this for initialization
 	void Start () {
@@ -16,7 +17,7 @@ public class PlatformCreator : MonoBehaviour {
 		platformLayout = new PlatformLayout(squaresOne);
 		platform = new Platform(platformLayout);
 
-		Platform.CreatePlatform(platform, worldLocation);
+		Platform.CreatePlatform(platform, worldLocation, pawn);
 	}
 	
 	// Update is called once per frame
