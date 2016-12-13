@@ -16,7 +16,6 @@ public class PlatformCreator : MonoBehaviour {
 		squaresOne = AddPlatformOneSquares();
 		platformLayout = new PlatformLayout(squaresOne);
 		platform = new Platform(platformLayout);
-
 		Platform.CreatePlatform(platform, worldLocation, pawn);
 	}
 	

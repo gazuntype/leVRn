@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 
 public class MessageBoard : MonoBehaviour {
 	public Text[] log;
+	[HideInInspector]
+	public static List<string> command = new List<string>();
 	int index;
 	void Start()
 	{
@@ -23,6 +25,7 @@ public class MessageBoard : MonoBehaviour {
 			if (MenuButtonClick.button.tag == "functionButton")
 			{
 				log[index].text = MenuButtonClick.button.name + "()";
+				command.Add(MenuButtonClick.button.name);
 				MenuButtonClick.buttonPressed = false;
 				index++;
 			}
