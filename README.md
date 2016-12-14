@@ -1,5 +1,4 @@
 # leVRn
-## VR Game for teaching how to code.
 ## Winner of Lagos VR Hackathon
 leVRn is a virtual reality platform that immerses its users in an amazing space for learning.
 
