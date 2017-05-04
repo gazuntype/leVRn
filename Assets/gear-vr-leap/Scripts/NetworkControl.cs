@@ -11,6 +11,8 @@ public class NetworkControl : MonoBehaviour
 	public GameObject ipText;
 	public GameObject inputField;
 	public GameObject explore;
+	public GameObject back;
+
 	NetworkManager manager;
 	// Use this for initialization
 	void Start()
@@ -20,6 +22,7 @@ public class NetworkControl : MonoBehaviour
 		joinRoom.SetActive(false);
 		ipText.SetActive(false);
 		inputField.SetActive(false);
+		back.SetActive(false);
 	}
 
 	// Update is called once per frame
@@ -33,6 +36,7 @@ public class NetworkControl : MonoBehaviour
 		startServer.SetActive(false);
 		startClient.SetActive(false);
 		explore.SetActive(false);
+		back.SetActive(true);
 		createRoom.SetActive(true);
 		ipText.SetActive(true);
 	}
@@ -42,8 +46,26 @@ public class NetworkControl : MonoBehaviour
 		startServer.SetActive(false);
 		startClient.SetActive(false);
 		explore.SetActive(false);
+		back.SetActive(true);
 		joinRoom.SetActive(true);
 		inputField.SetActive(true);
+	}
+
+	public void Back()
+	{
+		startServer.SetActive(true);
+		startClient.SetActive(true);
+		explore.SetActive(true);
+		joinRoom.SetActive(false);
+		inputField.SetActive(false);
+		createRoom.SetActive(false);
+		ipText.SetActive(false);
+		back.SetActive(false);
+	}
+
+	public void Explore()
+	{
+
 	}
 
 	public void CreateRoom()
