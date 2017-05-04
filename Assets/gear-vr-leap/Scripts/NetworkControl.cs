@@ -10,6 +10,7 @@ public class NetworkControl : MonoBehaviour
 	public GameObject joinRoom;
 	public GameObject ipText;
 	public GameObject inputField;
+	public GameObject explore;
 	NetworkManager manager;
 	// Use this for initialization
 	void Start()
@@ -31,6 +32,7 @@ public class NetworkControl : MonoBehaviour
 	{
 		startServer.SetActive(false);
 		startClient.SetActive(false);
+		explore.SetActive(false);
 		createRoom.SetActive(true);
 		ipText.SetActive(true);
 	}
@@ -39,6 +41,7 @@ public class NetworkControl : MonoBehaviour
 	{
 		startServer.SetActive(false);
 		startClient.SetActive(false);
+		explore.SetActive(false);
 		joinRoom.SetActive(true);
 		inputField.SetActive(true);
 	}
