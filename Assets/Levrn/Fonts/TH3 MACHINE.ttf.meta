@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 6e181aa0572096f468d8e6753105579d
+timeCreated: 1493894453
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: TH3 MACHINE
+  fontNames:
+  - TH3 MACHINE
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
