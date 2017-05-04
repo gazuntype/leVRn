@@ -11,7 +11,7 @@ using Valve.VR;
 
 [ExecuteInEditMode]
 #if CURVEDUI_GOOGLEVR
-public class CurvedUIInputModule : GazeInputModule {
+public class CurvedUIInputModule : GvrPointerInputModule {
 #else
 public class CurvedUIInputModule : StandaloneInputModule {
 #endif 
