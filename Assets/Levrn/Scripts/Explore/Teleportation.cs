@@ -19,7 +19,7 @@ public class Teleportation : MonoBehaviour {
 	{
 		if (NetworkControl.isExploring)
 		{
-			warpEffect.SetActive(true);
+			warpEffect.GetComponent<ParticleSystem>().Play();
 		}
 	}
 
@@ -32,7 +32,7 @@ public class Teleportation : MonoBehaviour {
 	{
 		if (NetworkControl.isExploring)
 		{
-			warpEffect.SetActive(false);
+			warpEffect.GetComponent<ParticleSystem>().Stop();
 		}
 	}
 }
