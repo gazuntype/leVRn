@@ -6,8 +6,11 @@ public class Teleportation : MonoBehaviour {
 
 	public GameObject player;
 	public GameObject warpEffect;
+
+	private ParticleSystem playerWarp;
 	// Use this for initialization
 	void Start () {
+		playerWarp = player.GetComponentInChildren<ParticleSystem>();
 	}
 	
 	// Update is called once per frame
@@ -25,7 +28,15 @@ public class Teleportation : MonoBehaviour {
 
 	public void TeleportUser()
 	{
+		StartCoroutine(TeleportEffect());
+	}
 
+	IEnumerator TeleportEffect()
+	{
+		playerWarp.Play();
+		yield return new WaitForSeconds(1f);
+		playerWarp.Stop();
+		player.transform.position = new Vector3(transform.position.x, player.transform.position.y, transform.position.z);
 	}
 
 	public void OffLight()
