@@ -6,7 +6,7 @@ using System.Collections;
 public class NetworkControl : MonoBehaviour
 {
 
-	#region Variable Declaration
+	#region Public Variables Declaration
 	[Header("Network Setup")]
 	public GameObject startServer;
 	public GameObject startClient;
@@ -16,6 +16,7 @@ public class NetworkControl : MonoBehaviour
 	public GameObject inputField;
 	public GameObject explore;
 	public GameObject back;
+	public GameObject begin;
 
 	[Header("Dynamic Texts")]
 	public Text title;
