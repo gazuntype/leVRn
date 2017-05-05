@@ -105,6 +105,7 @@ public class NetworkControl : MonoBehaviour
 	#region Explore
 	public void Explore()
 	{
+		begin.SetActive(true);
 		startServer.SetActive(false);
 		startClient.SetActive(false);
 		explore.SetActive(false);
