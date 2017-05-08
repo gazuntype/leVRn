@@ -38,9 +38,11 @@ public class EnterTent : MonoBehaviour
 	[Tooltip("The string that should be animated")]
 	public string text;
 
+	private Collider tentCollider;
+
 	// Use this for initialization
 	void Start () {
-		
+		tentCollider = GetComponent<Collider>();
 	}
 	
 	// Update is called once per frame
@@ -65,6 +67,7 @@ public class EnterTent : MonoBehaviour
 		player.transform.position = insideTent;
 		titleCanvas.SetActive(false);
 		curvedCanvas.SetActive(true);
+		tentCollider.enabled = false;
 	}
 
 	public IEnumerator AnimateText()
