@@ -3,11 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnterTent : MonoBehaviour {
+public class EnterTent : MonoBehaviour
+{
+	public GameObject player;
+
 	[Header("Tent Entering Properties")]
 	public GameObject titleCanvas;
 
+	[Tooltip("The canvas that contains the curved canvas of the tent.")]
+	public GameObject curvedCanvas;
+
+	[Tooltip("The name of the teleport pad in front of this particular tent.")]
 	public string teleportPadName;
+
+	[Tooltip("The Vector3 position data for when the user is inside the tent.")]
+	public Vector3 insideTent;
+
 
 	[HideInInspector]
 	public static bool animationComplete;
@@ -52,6 +63,14 @@ public class EnterTent : MonoBehaviour {
 	{
 		textComponent.text = "";
 	}
+
+	public void EnterTentOnClick()
+	{
+		player.transform.position = insideTent;
+		titleCanvas.SetActive(false);
+		curvedCanvas.SetActive(true);
+	}
+
 	public IEnumerator AnimateText()
 	{
 		animationComplete = false;
