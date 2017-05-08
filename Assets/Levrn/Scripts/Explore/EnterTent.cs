@@ -4,11 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class EnterTent : MonoBehaviour {
+	[Header("Tent Entering Properties")]
+	public GameObject titleCanvas;
+
+	public string teleportPadName;
 
 	[HideInInspector]
 	public static bool animationComplete;
 
-	[Tooltip("Total time of the animation.")]
+	[Header("Animate Text Properties")]
+	[Tooltip("Total time of the animation in seconds.")]
 	public float animationTime;
 
 	[Range(0, 10)]
@@ -29,14 +34,24 @@ public class EnterTent : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (Teleportation.currentTeleportPad == null && !titleCanvas.activeSelf)
+		{
+			titleCanvas.SetActive(true);
+		}
 	}
 
 	public void ShowInstruction()
 	{
-		StartCoroutine(AnimateText());
+		if (Teleportation.currentTeleportPad == teleportPadName)
+		{
+			StartCoroutine(AnimateText());
+		}
 	}
 
+	public void RemoveInstruction()
+	{
+		textComponent.text = "";
+	}
 	public IEnumerator AnimateText()
 	{
 		animationComplete = false;
