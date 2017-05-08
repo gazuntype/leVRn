@@ -150,6 +150,11 @@ public class NetworkControl : MonoBehaviour
 		rightInformation.text = instructionText[3, 0];
 		curvedCanvas.SetActive(false);
 		titleCanvas.SetActive(true);
+
+		startServer.SetActive(true);
+		startClient.SetActive(true);
+		explore.SetActive(true);
+		begin.SetActive(false);
 	}
 	#endregion
 }
