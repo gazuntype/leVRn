@@ -7,6 +7,9 @@ public class Teleportation : MonoBehaviour {
 	public GameObject player;
 	public GameObject warpEffect;
 
+	[HideInInspector]
+	public static string currentTeleportPad;
+
 	private ParticleSystem playerWarp;
 	// Use this for initialization
 	void Start () {
@@ -37,6 +40,10 @@ public class Teleportation : MonoBehaviour {
 		yield return new WaitForSeconds(1f);
 		playerWarp.Stop();
 		player.transform.position = new Vector3(transform.position.x, player.transform.position.y, transform.position.z);
+		if (tag == "tentPads")
+		{
+			currentTeleportPad = gameObject.name;
+		}
 	}
 
 	public void OffLight()
