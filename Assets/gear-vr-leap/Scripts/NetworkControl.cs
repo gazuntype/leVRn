@@ -28,7 +28,7 @@ public class NetworkControl : MonoBehaviour
 
 	[Header("Canvas")]
 	public GameObject curvedCanvas;
-
+	public GameObject titleCanvas;
 
 	[HideInInspector]
 	public static bool isExploring = false;
@@ -125,6 +125,7 @@ public class NetworkControl : MonoBehaviour
 	{
 		isExploring = true;
 		curvedCanvas.SetActive(false);
+		titleCanvas.SetActive(true);
 	}
 	#endregion
 }

@@ -45,10 +45,6 @@ public class EnterTent : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-		if (Teleportation.currentTeleportPad == null && !titleCanvas.activeSelf)
-		{
-			titleCanvas.SetActive(true);
-		}
 	}
 
 	public void ShowInstruction()
