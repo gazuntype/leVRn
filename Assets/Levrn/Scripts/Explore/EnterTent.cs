@@ -60,7 +60,7 @@ public class EnterTent : MonoBehaviour
 
 	public void RemoveInstruction()
 	{
-		StopCoroutine(AnimateText());
+		animationComplete = true;
 		textComponent.text = "";
 	}
 
