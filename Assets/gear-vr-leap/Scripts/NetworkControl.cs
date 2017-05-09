@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using System.Collections;
 
 public class NetworkControl : MonoBehaviour
 {
 
 	#region Public Variables Declaration
+	public EventTrigger tentEventTrigger;
+
 	[Header("Network Setup")]
 	public GameObject startServer;
 	public GameObject startClient;
@@ -63,6 +66,7 @@ public class NetworkControl : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
+		tentEventTrigger.enabled = false;
 		manager = GetComponent<NetworkManager>();
 		createRoom.SetActive(false);
 		joinRoom.SetActive(false);
@@ -150,6 +154,7 @@ public class NetworkControl : MonoBehaviour
 		rightInformation.text = instructionText[3, 0];
 		curvedCanvas.SetActive(false);
 		titleCanvas.SetActive(true);
+		tentEventTrigger.enabled = true;
 
 		startServer.SetActive(true);
 		startClient.SetActive(true);

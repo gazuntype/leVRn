@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -38,11 +39,11 @@ public class EnterTent : MonoBehaviour
 	[Tooltip("The string that should be animated")]
 	public string text;
 
-	private Collider tentCollider;
+	private EventTrigger tentEventTrigger;
 
 	// Use this for initialization
 	void Start () {
-		tentCollider = GetComponent<Collider>();
+		tentEventTrigger = GetComponent<EventTrigger>();
 	}
 	
 	// Update is called once per frame
@@ -59,6 +60,7 @@ public class EnterTent : MonoBehaviour
 
 	public void RemoveInstruction()
 	{
+		StopCoroutine(AnimateText());
 		textComponent.text = "";
 	}
 
@@ -67,7 +69,7 @@ public class EnterTent : MonoBehaviour
 		player.transform.position = insideTent;
 		titleCanvas.SetActive(false);
 		curvedCanvas.SetActive(true);
-		tentCollider.enabled = false;
+		tentEventTrigger.enabled = false;
 	}
 
 	public IEnumerator AnimateText()
