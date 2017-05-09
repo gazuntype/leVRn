@@ -19,6 +19,7 @@ public class NetworkControl : MonoBehaviour
 	public GameObject inputField;
 	public GameObject explore;
 	public GameObject back;
+	public GameObject exploreBack;
 	public GameObject begin;
 
 	[Header("Dynamic Texts")]
@@ -113,6 +114,21 @@ public class NetworkControl : MonoBehaviour
 		back.SetActive(false);
 	}
 
+	public void ExploreBack()
+	{
+		subTitle.text = titleText[1, 0];
+		leftTitle.text = instructionText[0, 0];
+		leftInformation.text = instructionText[2, 0];
+		rightTitle.text = instructionText[1, 0];
+		rightInformation.text = instructionText[3, 0];
+
+		startServer.SetActive(true);
+		startClient.SetActive(true);
+		explore.SetActive(true);
+		begin.SetActive(false);
+		exploreBack.SetActive(false);
+	}
+
 	public void CreateRoom()
 	{
 		if (!NetworkClient.active && !NetworkServer.active && manager.matchMaker == null)
@@ -134,6 +150,8 @@ public class NetworkControl : MonoBehaviour
 	public void Explore()
 	{
 		begin.SetActive(true);
+		exploreBack.SetActive(true);
+
 		startServer.SetActive(false);
 		startClient.SetActive(false);
 		explore.SetActive(false);
@@ -159,7 +177,9 @@ public class NetworkControl : MonoBehaviour
 		startServer.SetActive(true);
 		startClient.SetActive(true);
 		explore.SetActive(true);
+
 		begin.SetActive(false);
+		exploreBack.SetActive(false);
 	}
 	#endregion
 }
