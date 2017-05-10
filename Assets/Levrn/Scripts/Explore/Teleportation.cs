@@ -10,6 +10,9 @@ public class Teleportation : MonoBehaviour {
 	[HideInInspector]
 	public static string currentTeleportPad;
 
+	[HideInInspector]
+	public static bool isOutside = false;
+
 	private ParticleSystem playerWarp;
 	// Use this for initialization
 	void Start () {
@@ -44,6 +47,7 @@ public class Teleportation : MonoBehaviour {
 		{
 			currentTeleportPad = gameObject.name;
 		}
+		isOutside = true;
 	}
 
 	public void OffLight()

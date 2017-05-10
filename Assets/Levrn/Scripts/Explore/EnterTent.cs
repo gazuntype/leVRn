@@ -24,7 +24,7 @@ public class EnterTent : MonoBehaviour
 	[HideInInspector]
 	public static bool animationComplete;
 
-	[Header("Animate Text Properties")]
+	[Header("Animate Instruction Text Properties")]
 	[Tooltip("Total time of the animation in seconds.")]
 	public float animationTime;
 
@@ -32,11 +32,11 @@ public class EnterTent : MonoBehaviour
 	[Tooltip("The amount of time to delay before beginning the animation.")]
 	public float initialDelay = 5;
 
-	[Tooltip("The UI Text component that shall display the animation.")]
+	[Tooltip("The UI Text component that shall display the animation for the instruction.")]
 	public Text textComponent;
 
 	[TextArea]
-	[Tooltip("The string that should be animated")]
+	[Tooltip("The string that should be animated as instruction.")]
 	public string text;
 
 	private EventTrigger tentEventTrigger;
@@ -48,6 +48,14 @@ public class EnterTent : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
+		if (Teleportation.isOutside)
+		{
+			OutsideTentProperties();
+		}
+		else
+		{
+			InsideTentProperties();
+		}
 	}
 
 	public void ShowInstruction()
@@ -67,9 +75,7 @@ public class EnterTent : MonoBehaviour
 	public void EnterTentOnClick()
 	{
 		player.transform.position = insideTent;
-		titleCanvas.SetActive(false);
-		curvedCanvas.SetActive(true);
-		tentEventTrigger.enabled = false;
+		Teleportation.isOutside = false;
 	}
 
 	public IEnumerator AnimateText()
@@ -88,5 +94,37 @@ public class EnterTent : MonoBehaviour
 			yield return new WaitForSeconds(animationTime / text.Length);
 		}
 		animationComplete = true;
+	}
+
+	void OutsideTentProperties()
+	{
+		if (!titleCanvas.activeSelf)
+		{
+			titleCanvas.SetActive(true);
+		}
+		if (!tentEventTrigger.enabled)
+		{
+			tentEventTrigger.enabled = true;
+		}
+		if (curvedCanvas.activeSelf)
+		{
+			curvedCanvas.SetActive(false);
+		}
+	}
+
+	void InsideTentProperties()
+	{
+		if (titleCanvas.activeSelf)
+		{
+			titleCanvas.SetActive(false);
+		}
+		if (tentEventTrigger.enabled)
+		{
+			tentEventTrigger.enabled = false;
+		}
+		if (!curvedCanvas.activeSelf)
+		{
+			curvedCanvas.SetActive(true);
+		}
 	}
 }

@@ -170,9 +170,7 @@ public class NetworkControl : MonoBehaviour
 		leftInformation.text = instructionText[2, 0];
 		rightTitle.text = instructionText[1, 0];
 		rightInformation.text = instructionText[3, 0];
-		curvedCanvas.SetActive(false);
-		titleCanvas.SetActive(true);
-		tentEventTrigger.enabled = true;
+		Teleportation.isOutside = true;
 
 		startServer.SetActive(true);
 		startClient.SetActive(true);
