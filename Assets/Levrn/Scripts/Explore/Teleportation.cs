@@ -24,6 +24,14 @@ public class Teleportation : MonoBehaviour {
 		
 	}
 
+	void LateUpdate()
+	{
+		if (player == null)
+		{
+			player = GameObject.FindGameObjectWithTag("Player");
+		}
+	}
+
 	public void ShowLight()
 	{
 		if (NetworkControl.isExploring)

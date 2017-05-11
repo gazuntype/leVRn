@@ -58,6 +58,14 @@ public class EnterTent : MonoBehaviour
 		}
 	}
 
+	void LateUpdate()
+	{
+		if (player == null)
+		{
+			player = GameObject.FindGameObjectWithTag("Player");
+		}
+	}
+
 	public void ShowInstruction()
 	{
 		if (Teleportation.currentTeleportPad == teleportPadName)
