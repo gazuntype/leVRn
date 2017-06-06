@@ -111,7 +111,7 @@ namespace CurvedUI
 
             //Debug.Log("caret:" + myField.caretPosition + " / focus:"+ myField.selectionFocusPosition + " / anchor:" + myField.selectionAnchorPosition  + " / charc:" + myField.textComponent.cachedTextGenerator.characterCount + " / charvis:" + myField.textComponent.cachedTextGenerator.characterCountVisible);
             Vector2 newCaretPos = GetLocalPositionInText(myField.caretPosition);
-            RectTransform originalCaret = (RectTransform)myField.transform.FindChild(myField.name + " Input Caret");
+            RectTransform originalCaret = (RectTransform)myField.transform.Find(myField.name + " Input Caret");
 
             if (myField.selectionFocusPosition != myField.selectionAnchorPosition) // user is selecting text is those two are not equal.
             {
