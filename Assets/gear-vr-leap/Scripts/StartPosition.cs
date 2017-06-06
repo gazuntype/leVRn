@@ -6,7 +6,7 @@ public class StartPosition : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		transform.position = new Vector3(-21.6f, 2f, -21.9f);
+		transform.position = new Vector3(-2.4f, 2f, 38.4f);
 		transform.rotation = Quaternion.identity;
 	}
 	
