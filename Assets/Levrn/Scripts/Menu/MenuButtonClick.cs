@@ -22,6 +22,7 @@ public class MenuButtonClick : MonoBehaviour
 	void OnTriggerEnter(Collider other){
 		if (other.tag == "button")
 		{
+			Debug.Log("Collided with the button");
 			front = CheckIfObjectIsInFront(other.transform, transform);
 			if (front)
 			{
@@ -35,11 +36,11 @@ public class MenuButtonClick : MonoBehaviour
 		bool inFront = false;
 		Vector3 displacement = finger.position - buttonClicked.position;
 		float dotProduct = Vector3.Dot(displacement, buttonClicked.forward);
-		if (dotProduct > 0)
+		if (dotProduct < 0)
 		{
 			inFront = true;
 		}
-		else if (dotProduct < 0)
+		else if (dotProduct > 0)
 		{
 			inFront = false;
 		}
