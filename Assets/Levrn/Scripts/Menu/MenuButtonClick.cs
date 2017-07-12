@@ -54,6 +54,8 @@ public class MenuButtonClick : MonoBehaviour
 			case "Play":
 				titleScreen.ClickedPlay();
 				break;
+			case "Level1":
+				break;
 		}
 	}
 

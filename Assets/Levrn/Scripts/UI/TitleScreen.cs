@@ -6,6 +6,7 @@ public class TitleScreen : MonoBehaviour {
 
 	public GameObject title;
 	public GameObject menuScreen;
+	public GameObject levelScreen;
 
 	UIStates state;
 	float fadeOutTime;
@@ -33,8 +34,11 @@ public class TitleScreen : MonoBehaviour {
 	public void ClickedPlay()
 	{
 		menuScreen.SetActive(false);
+		levelScreen.SetActive(true);
 		state = UIStates.level;
 	}
+
+
 
 	enum UIStates { title, menu, level, help, sublevel }
 }
