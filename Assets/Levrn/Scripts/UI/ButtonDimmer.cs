@@ -21,9 +21,13 @@ public class ButtonDimmer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		distance = Vector3.Distance(finger.transform.position, transform.position);
-		if (distance < maxDistance)
+		if (distance < maxDistance && CheckFingerHeight())
 		{
 			buttonImage.color = GetImageColour();
+		}
+		else
+		{
+			buttonImage.color = originalColor;
 		}
 		Debug.Log(distance);
 	}
@@ -35,5 +39,17 @@ public class ButtonDimmer : MonoBehaviour {
 		interpolant = distance / maxDistance;
 		color = Color.Lerp(finalColor, originalColor, interpolant);
 		return color;
+	}
+
+	bool CheckFingerHeight()
+	{
+		if (finger.transform.position.y < transform.position.y + 0.02f && finger.transform.position.y > transform.position.y - 0.02)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 }
