@@ -8,9 +8,11 @@ public class TitleScreen : MonoBehaviour {
 	public GameObject menuScreen;
 
 	UIStates state;
+	float fadeOutTime;
 
 	// Use this for initialization
 	void Start () {
+		fadeOutTime = 3;
 		state = UIStates.title;
 		StartCoroutine(FadeWelcomeScreen());
 	}
@@ -22,7 +24,7 @@ public class TitleScreen : MonoBehaviour {
 
 	IEnumerator FadeWelcomeScreen()
 	{
-		yield return new WaitForSeconds(3);
+		yield return new WaitForSeconds(fadeOutTime);
 		title.SetActive(false);
 		menuScreen.SetActive(true);
 		state = UIStates.menu;
