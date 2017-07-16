@@ -29,7 +29,6 @@ public class ButtonDimmer : MonoBehaviour {
 		{
 			buttonImage.color = originalColor;
 		}
-		Debug.Log(distance);
 	}
 
 	Color GetImageColour()
