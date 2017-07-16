@@ -41,6 +41,7 @@ public class ManipulateUI : MonoBehaviour {
 		{
 			initialHandPos = movingFinger.transform.position;
 			initialDashPos = other.transform.position;
+			movingDash = other.gameObject;
 			onPinch = true;
 			Debug.Log("Board was pinched and should move");
 		}
@@ -52,6 +53,7 @@ public class ManipulateUI : MonoBehaviour {
 		{
 			initialHandPos = movingFinger.transform.position;
 			initialDashPos = other.transform.position;
+			movingDash = other.gameObject;
 			onPinch = true;
 			Debug.Log("Board was pinched and should move");
 		}
@@ -60,11 +62,12 @@ public class ManipulateUI : MonoBehaviour {
 	void OnTriggerExit(Collider other)
 	{
 		onPinch = false;
+		Debug.Log("Left the board");
 	}
 
 	void MoveDashboard()
 	{
-		if (onPinch)
+		if (onPinch && (int)dataTracker.transform.position.x == 5)
 		{
 			movingDash.transform.position = initialDashPos + (movingFinger.transform.position - initialHandPos);
 		}
