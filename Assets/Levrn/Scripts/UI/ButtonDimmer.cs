@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ButtonDimmer : MonoBehaviour {
 	float distance;
-	public GameObject finger;
+	public GameObject[] fingers;
 	Image buttonImage;
 	Color originalColor;
 	Color finalColor;
@@ -20,14 +20,17 @@ public class ButtonDimmer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		distance = Vector3.Distance(finger.transform.position, transform.position);
-		if (distance < maxDistance && CheckFingerHeight())
+		foreach (GameObject finger in fingers)
 		{
-			buttonImage.color = GetImageColour();
-		}
-		else
-		{
-			buttonImage.color = originalColor;
+			distance = Vector3.Distance(finger.transform.position, transform.position);
+			if (distance < maxDistance && CheckFingerHeight())
+			{
+				buttonImage.color = GetImageColour();
+			}
+			else
+			{
+				buttonImage.color = originalColor;
+			}
 		}
 	}
 
@@ -42,13 +45,18 @@ public class ButtonDimmer : MonoBehaviour {
 
 	bool CheckFingerHeight()
 	{
-		if (finger.transform.position.y < transform.position.y + 0.02f && finger.transform.position.y > transform.position.y - 0.02)
+		bool status = false;
+		foreach (GameObject finger in fingers)
 		{
-			return true;
+			if (finger.transform.position.y < transform.position.y + 0.02f && finger.transform.position.y > transform.position.y - 0.02)
+			{
+				status = true;
+			}
+			else
+			{
+				status = false;
+			}
 		}
-		else
-		{
-			return false;
-		}
+		return status;
 	}
 }
