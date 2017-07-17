@@ -6,8 +6,8 @@ public class ManipulateUI : MonoBehaviour {
 
 	public GameObject dataTracker;
 	public GameObject movingFinger;
-	public GameObject otherFinger;
-	public float scaleFactor;
+	//public GameObject otherFinger;
+	//public float scaleFactor;
 
 	[HideInInspector]
 	public static List<Vector3> zoomInitialPos = new List<Vector3>();
@@ -15,12 +15,14 @@ public class ManipulateUI : MonoBehaviour {
 	[HideInInspector]
 	public static bool onZoom = false;
 
+	[HideInInspector]
+	public static bool onPinch = false;
+
 	Vector3 initialDashScale;
 	float initialHandDistance;
 	Vector3 initialDashPos;
 	Vector3 initialHandPos;
 
-	bool onPinch = false;
 	GameObject movingDash;
 
 	// Use this for initialization
@@ -103,8 +105,9 @@ public class ManipulateUI : MonoBehaviour {
 
 	void OnTriggerExit(Collider other)
 	{
-		onPinch = false;
 		onZoom = false;
+		movingDash = null;
+		onPinch = false;
 		Debug.Log("Left the board");
 	}
 
@@ -116,12 +119,12 @@ public class ManipulateUI : MonoBehaviour {
 		}
 	}
 
-	void ScaleDashboard()
+	/*void ScaleDashboard()
 	{
 		if (onZoom && (int)dataTracker.transform.position.x == 6)
 		{
 			float handDistance = Vector3.Distance(movingFinger.transform.position, otherFinger.transform.position);
 			movingDash.transform.localScale = initialDashScale * scaleFactor * (handDistance - initialHandDistance);
 		}
-	}
+	}*/
 }
