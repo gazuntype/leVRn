@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ManipulateUI : MonoBehaviour {
 
@@ -24,6 +25,7 @@ public class ManipulateUI : MonoBehaviour {
 	Vector3 initialHandPos;
 
 	GameObject movingDash;
+	Image dashBackground;
 
 	// Use this for initialization
 	void Start () {
@@ -53,6 +55,10 @@ public class ManipulateUI : MonoBehaviour {
 	public void ResetDataTracker()
 	{
 		dataTracker.transform.position = new Vector3(0, 0, 0);
+		if (dashBackground != null)
+		{
+			dashBackground.color = Color.black;
+		}
 		zoomInitialPos.Clear();
 		Debug.Log("Pinch was released");
 	}
@@ -67,6 +73,8 @@ public class ManipulateUI : MonoBehaviour {
 				initialHandPos = movingFinger.transform.position;
 				initialDashPos = other.transform.position;
 				movingDash = other.gameObject;
+				dashBackground = movingDash.transform.GetChild(0).GetComponent<Image>();
+				dashBackground.color = Color.green;
 				onPinch = true;
 				Debug.Log("Board was pinched and should move");
 			}
@@ -89,6 +97,8 @@ public class ManipulateUI : MonoBehaviour {
 			initialHandPos = movingFinger.transform.position;
 			initialDashPos = other.transform.position;
 			movingDash = other.gameObject;
+			dashBackground = movingDash.transform.GetChild(0).GetComponent<Image>();
+			dashBackground.color = Color.green;
 			onPinch = true;
 			Debug.Log("Board was pinched and should move");
 		}
@@ -106,6 +116,8 @@ public class ManipulateUI : MonoBehaviour {
 	void OnTriggerExit(Collider other)
 	{
 		onZoom = false;
+		dashBackground.color = Color.black;
+		dashBackground = null;
 		movingDash = null;
 		onPinch = false;
 		Debug.Log("Left the board");
