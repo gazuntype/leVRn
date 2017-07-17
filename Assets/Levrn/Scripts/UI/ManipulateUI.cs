@@ -30,23 +30,22 @@ public class ManipulateUI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log(dataTracker.transform.position.x);
 		MoveDashboard();
-		ScaleDashboard();
+		//ScaleDashboard();
 	}
 
 	public void SetDataTracker()
 	{
-		if ((int)dataTracker.transform.position.x < 5)
+		if ((int)dataTracker.transform.position.x != 5)
 		{
 			dataTracker.transform.position = new Vector3(5, 0, 0);
 			Debug.Log("Pinch was detected");
 		}
-		else if ((int)dataTracker.transform.position.x == 5)
+		/*else if ((int)dataTracker.transform.position.x == 5)
 		{
 			dataTracker.transform.position = new Vector3(6, 0, 0);
 			Debug.Log("Double pinch was detected");
-		}
+		}*/
 	}
 
 	public void ResetDataTracker()
@@ -69,7 +68,7 @@ public class ManipulateUI : MonoBehaviour {
 				onPinch = true;
 				Debug.Log("Board was pinched and should move");
 			}
-			else if ((int)dataTracker.transform.position.x == 6)
+			/*else if ((int)dataTracker.transform.position.x == 6)
 			{
 				zoomInitialPos.Add(movingFinger.transform.position);
 				initialDashScale = other.transform.localScale;
@@ -77,7 +76,7 @@ public class ManipulateUI : MonoBehaviour {
 				Debug.Log("Board was double pinched and should zoom");
 				onZoom = true;
 
-			}
+			}*/
 		}
 	}
 
@@ -92,14 +91,14 @@ public class ManipulateUI : MonoBehaviour {
 			Debug.Log("Board was pinched and should move");
 		}
 
-		if (other.tag == "board" && (int)dataTracker.transform.position.x == 6 && !onZoom)
+		/*if (other.tag == "board" && (int)dataTracker.transform.position.x == 6 && !onZoom)
 		{
 			zoomInitialPos.Add(movingFinger.transform.position);
 			initialDashScale = other.transform.localScale;
 			initialHandDistance = Vector3.Distance(movingFinger.transform.position, otherFinger.transform.position);
 			Debug.Log("Board was double pinched and should zoom");
 			onZoom = true;
-		}
+		}*/
 	}
 
 	void OnTriggerExit(Collider other)
