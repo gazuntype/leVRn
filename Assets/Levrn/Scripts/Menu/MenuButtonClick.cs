@@ -19,7 +19,7 @@ public class MenuButtonClick : MonoBehaviour
 	
 	}
 
-	void OnTriggerEnter(Collider other){
+	void OnTriggerExit(Collider other){
 		if (other.tag == "button")
 		{
 			Debug.Log("Collided with the button");

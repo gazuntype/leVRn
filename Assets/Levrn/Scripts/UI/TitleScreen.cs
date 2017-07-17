@@ -8,6 +8,8 @@ public class TitleScreen : MonoBehaviour {
 	public GameObject menuScreen;
 	public GameObject levelScreen;
 	public GameObject functionScreen;
+	public GameObject methodCanvas;
+	public GameObject dashboardCanvas;
 
 	UIStates state;
 	float fadeOutTime;
@@ -43,7 +45,10 @@ public class TitleScreen : MonoBehaviour {
 	{
 		levelScreen.SetActive(false);
 		functionScreen.SetActive(true);
+		methodCanvas.SetActive(true);
+		dashboardCanvas.SetActive(true);
 		state = UIStates.function;
+
 	}
 
 
