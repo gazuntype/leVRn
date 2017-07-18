@@ -5,7 +5,12 @@ using UnityEngine.UI;
 
 public class ButtonDimmer : MonoBehaviour {
 	float distance;
+	float distance2;
 	public GameObject finger;
+	public GameObject finger2;
+
+	GameObject closestFinger;
+	float closestDistance;
 	Image buttonImage;
 	Color originalColor;
 	Color finalColor;
@@ -21,11 +26,25 @@ public class ButtonDimmer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		distance = Vector3.Distance(finger.transform.position, transform.position);
-		if (distance < maxDistance && CheckFingerHeight())
+		distance2 = Vector3.Distance(finger2.transform.position, transform.position);
+
+		if (distance < distance2)
+		{
+			closestFinger = finger;
+			closestDistance = distance;
+		}
+		else
+		{
+			closestFinger = finger2;
+			closestDistance = distance2;
+		}
+
+		if (closestDistance < maxDistance && CheckFingerHeight(closestFinger))
 		{
 			buttonImage.color = GetImageColour();
 		}
-		else
+
+		if (!CheckFingerHeight(closestFinger))
 		{
 			buttonImage.color = originalColor;
 		}
@@ -35,14 +54,14 @@ public class ButtonDimmer : MonoBehaviour {
 	{
 		Color color;
 		float interpolant;
-		interpolant = distance / maxDistance;
+		interpolant = closestDistance / maxDistance;
 		color = Color.Lerp(finalColor, originalColor, interpolant);
 		return color;
 	}
 
-	bool CheckFingerHeight()
+	bool CheckFingerHeight(GameObject check)
 	{
-		if (FingerWithin(finger))
+		if (FingerWithin(check))
 		{
 			return true;
 		}
@@ -54,6 +73,6 @@ public class ButtonDimmer : MonoBehaviour {
 
 	bool FingerWithin(GameObject ifinger)
 	{
-		return (ifinger.transform.position.y < transform.position.y + 0.02f && finger.transform.position.y > transform.position.y - 0.02);
+		return (ifinger.transform.position.y < transform.position.y + 0.02f && ifinger.transform.position.y > transform.position.y - 0.02);
 	}
 }
