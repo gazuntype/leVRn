@@ -3,8 +3,8 @@ namespace LevrnScripts
 {
 	public class Function
 	{
-		public FunctionType type;
-		public string functionName;
+		FunctionType type;
+		string functionName;
 
 		public FunctionType Type
 		{
@@ -16,10 +16,10 @@ namespace LevrnScripts
 			get { return functionName; }
 		}
 
-		public Function(string name, FunctionType type)
+		public Function(string thisName, FunctionType type)
 		{
-			name = this.functionName;
-			type = this.type;
+			this.functionName = thisName;
+			this.type = type;
 		}
 
 

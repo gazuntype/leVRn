@@ -23,29 +23,37 @@ public class FunctionControl : MonoBehaviour {
 
 	public void ClickedMoveForward()
 	{
-		Function function = new Function("moveForward", Function.FunctionType.moveForward);
-		entree[queuedFunctions.Count].text = function.functionName;
+		Debug.Log("Clicked");
+		Debug.Log(queuedFunctions.Count);
+		Function function = new Function("moveForward()", Function.FunctionType.moveForward);
+		entree[queuedFunctions.Count].text = function.FunctionName;
 		queuedFunctions.Add(function);
 	}
 
 	public void ClickedMoveLeft()
 	{
-		Function function = new Function("moveLeft", Function.FunctionType.moveLeft);
-		entree[queuedFunctions.Count].text = function.functionName;
+		Debug.Log("Clicked");
+		Debug.Log(queuedFunctions.Count);
+		Function function = new Function("moveLeft()", Function.FunctionType.moveLeft);
+		entree[queuedFunctions.Count].text = function.FunctionName;
 		queuedFunctions.Add(function);
 	}
 
 	public void ClickedMoveRight()
 	{
-		Function function = new Function("moveRight", Function.FunctionType.moveRight);
-		entree[queuedFunctions.Count].text = function.functionName;
+		Debug.Log("Clicked");
+		Debug.Log(queuedFunctions.Count);
+		Function function = new Function("moveRight()", Function.FunctionType.moveRight);
+		entree[queuedFunctions.Count].text = function.FunctionName;
 		queuedFunctions.Add(function);
 	}
 
 	public void ClickedMoveBack()
 	{
-		Function function = new Function("moveBack", Function.FunctionType.moveBack);
-		entree[queuedFunctions.Count].text = function.functionName;
+		Debug.Log("Clicked");
+		Debug.Log(queuedFunctions.Count);
+		Function function = new Function("moveBack()", Function.FunctionType.moveBack);
+		entree[queuedFunctions.Count].text = function.FunctionName;
 		queuedFunctions.Add(function);
 	}
 }
