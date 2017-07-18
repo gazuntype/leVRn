@@ -7,11 +7,15 @@ public class MenuButtonClick : MonoBehaviour
 	public static bool buttonPressed = false;
 	public static GameObject button;
 
+	GameObject rigController;
+	FunctionControl functionControl;
 	TitleScreen titleScreen;
 	bool front;
 	// Use this for initialization
 	void Start () {
-		titleScreen = GameObject.Find("RigController").GetComponent<TitleScreen>();
+		rigController = GameObject.Find("RigController");
+		titleScreen = rigController.GetComponent<TitleScreen>();
+		functionControl = rigController.GetComponent<FunctionControl>();
 	}
 	
 	// Update is called once per frame
@@ -56,6 +60,18 @@ public class MenuButtonClick : MonoBehaviour
 				break;
 			case "Level1":
 				titleScreen.ClickedFunctions();
+				break;
+			case "MoveForward":
+				functionControl.ClickedMoveForward();
+				break;
+			case "MoveLeft":
+				functionControl.ClickedMoveLeft();
+				break;
+			case "MoveRight":
+				functionControl.ClickedMoveRight();
+				break;
+			case "MoveBack":
+				functionControl.ClickedMoveBack();
 				break;
 		}
 	}
