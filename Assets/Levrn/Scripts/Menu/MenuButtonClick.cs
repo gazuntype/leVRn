@@ -79,6 +79,10 @@ public class MenuButtonClick : MonoBehaviour
 			case "Back":
 				titleScreen.PreviousInstruction();
 				break;
+			case "Run":
+				MovePawn movePawn = GameObject.FindGameObjectWithTag("pawn").GetComponent<MovePawn>();
+				movePawn.RunSimulation();
+				break;
 		}
 	}
 
