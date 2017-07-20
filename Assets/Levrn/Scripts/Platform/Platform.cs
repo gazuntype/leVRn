@@ -42,7 +42,7 @@ namespace LevrnScripts
 			this.layout = layout;
 		}
 
-		public static Platform CreatePlatform(Platform platform, Transform worldLocation, GameObject player)
+		public static Platform CreatePlatform(Platform platform, Transform worldLocation, GameObject player2)
 		{
 			foreach (Square square in platform.layout.squares)
 			{
@@ -63,8 +63,10 @@ namespace LevrnScripts
 						break;
 				}
 			}
-			GameObject.Instantiate(player);
+
+			GameObject player = GameObject.Instantiate(player2);
 			player.transform.localScale = new Vector3(platform.layout.squares[0].squareSize.x, platform.layout.squares[0].squareSize.x, platform.layout.squares[0].squareSize.x);
+			player.transform.SetParent(worldLocation);
 			player.transform.position = GameObject.FindGameObjectWithTag("Start").transform.position + new Vector3(0, player.GetComponent<Renderer>().bounds.extents.y, 0);
 			return platform;
 		}

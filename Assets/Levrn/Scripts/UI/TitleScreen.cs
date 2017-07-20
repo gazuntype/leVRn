@@ -11,6 +11,7 @@ public class TitleScreen : MonoBehaviour {
 	public GameObject menuCanvas;
 	public GameObject methodCanvas;
 	public GameObject dashboardCanvas;
+	public GameObject gameController;
 
 	public Text instruction;
 
@@ -57,6 +58,7 @@ public class TitleScreen : MonoBehaviour {
 		functionScreen.SetActive(true);
 		methodCanvas.SetActive(true);
 		dashboardCanvas.SetActive(true);
+		gameController.SetActive(true);
 		CanvasAnimations.MoveCanvas(menuCanvas, new Vector3(-0.28f, 0, 0.2f));
 		CanvasAnimations.MoveCanvas(dashboardCanvas, new Vector3(0, 0, 0.35f));
 		CanvasAnimations.MoveCanvas(methodCanvas, new Vector3(0.24f, 0, 0.25f));

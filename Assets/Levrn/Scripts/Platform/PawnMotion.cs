@@ -54,6 +54,9 @@ public class PawnMotion : MonoBehaviour {
 			case "moveForward":
 				pawnDestination = transform.position + new Vector3(0.1f, 0, 0);
 				break;
+			case "moveBack":
+				pawnDestination = transform.position - new Vector3(-0.1f, 0, 0);
+				break;
 			case "moveLeft":
 				pawnDestination = transform.position + new Vector3(0, 0, 0.1f);
 				break;
