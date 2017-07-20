@@ -73,6 +73,12 @@ public class MenuButtonClick : MonoBehaviour
 			case "MoveBack":
 				functionControl.ClickedMoveBack();
 				break;
+			case "Next":
+				titleScreen.NextInstruction();
+				break;
+			case "Back":
+				titleScreen.PreviousInstruction();
+				break;
 		}
 	}
 

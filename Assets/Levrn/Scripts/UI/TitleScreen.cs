@@ -19,7 +19,7 @@ public class TitleScreen : MonoBehaviour {
 	public string[] functionInstruction;
 
 
-
+	int index = 1;
 	UIStates state;
 	float fadeOutTime;
 
@@ -61,7 +61,32 @@ public class TitleScreen : MonoBehaviour {
 		CanvasAnimations.MoveCanvas(dashboardCanvas, new Vector3(0, 0, 0.35f));
 		CanvasAnimations.MoveCanvas(methodCanvas, new Vector3(0.24f, 0, 0.25f));
 		state = UIStates.function;
+	}
 
+	public void NextInstruction()
+	{
+		if (index == functionInstruction.Length - 1)
+		{
+			index = 0;
+		}
+		else
+		{
+			index++;
+		}
+		instruction.text = functionInstruction[index];
+	}
+
+	public void PreviousInstruction()
+	{
+		if (index == 0)
+		{
+			index = functionInstruction.Length - 1;
+		}
+		else
+		{
+			index--;
+		}
+		instruction.text = functionInstruction[index];
 	}
 
 
