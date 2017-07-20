@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class TitleScreen : MonoBehaviour {
 
 	public GameObject title;
@@ -12,8 +12,17 @@ public class TitleScreen : MonoBehaviour {
 	public GameObject methodCanvas;
 	public GameObject dashboardCanvas;
 
+	public Text instruction;
+
+	[Header("Instructions")]
+	[TextArea]
+	public string[] functionInstruction;
+
+
+
 	UIStates state;
 	float fadeOutTime;
+
 
 	// Use this for initialization
 	void Start () {
