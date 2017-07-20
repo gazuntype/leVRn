@@ -50,6 +50,7 @@ namespace LevrnScripts
 				primitiveSquare.transform.localScale = square.squareSize;
 				primitiveSquare.transform.parent = worldLocation;
 				primitiveSquare.transform.localPosition = Vector3.Scale(new Vector3(square.positionx, 0, square.positiony),square.squareSize);
+				primitiveSquare.transform.localPosition += new Vector3(-0.6f, 0, 0.54f);
 				switch (square.type)
 				{
 					case SquareType.Normal:
@@ -79,6 +80,7 @@ namespace LevrnScripts
 				primitiveSquare.transform.localScale = square.squareSize;
 				primitiveSquare.transform.parent = worldLocation;
 				primitiveSquare.transform.localPosition = Vector3.Scale(new Vector3(square.positionx, 0, square.positiony), square.squareSize);
+				primitiveSquare.transform.localPosition += new Vector3(-0.6f, 0, 0.54f);
 				switch (square.type)
 				{
 					case SquareType.Normal:
@@ -94,6 +96,7 @@ namespace LevrnScripts
 			}
 			GameObject.Instantiate(player);
 			player.transform.localScale = new Vector3(platform.layout.squares[0].squareSize.x, platform.layout.squares[0].squareSize.x, platform.layout.squares[0].squareSize.x);
+			player.transform.SetParent(worldLocation);
 			player.transform.position = GameObject.FindGameObjectWithTag("Start").transform.position + new Vector3(0, player.GetComponent<Renderer>().bounds.extents.y, 0);
 			return platform;
 		}

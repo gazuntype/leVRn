@@ -83,6 +83,9 @@ public class MenuButtonClick : MonoBehaviour
 				MovePawn movePawn = GameObject.FindGameObjectWithTag("pawn").GetComponent<MovePawn>();
 				movePawn.RunSimulation();
 				break;
+			case "Del":
+				functionControl.Del();
+				break;
 		}
 	}
 

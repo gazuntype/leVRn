@@ -56,4 +56,10 @@ public class FunctionControl : MonoBehaviour {
 		entree[queuedFunctions.Count].text = function.FunctionName;
 		queuedFunctions.Add(function);
 	}
+
+	public void Del()
+	{
+		entree[queuedFunctions.Count].text = "";
+		queuedFunctions.RemoveAt(queuedFunctions.Count - 1);
+	}
 }
