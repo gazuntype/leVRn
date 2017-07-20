@@ -7,14 +7,16 @@ public class MovePawn : MonoBehaviour
 {
 	GameObject pawn;
 
+	float initialY;
 	int index = 0;
 	Vector3 pawnDestination;
-	float lobHeight = 0.5f;
-	float lobTime = .7f;
+	float lobHeight = 0.1f;
+	float lobTime = .8f;
 	// Use this for initialization
 	void Start()
 	{
-		pawn = gameObject;
+		initialY = transform.position.y;
+		pawn = transform.GetChild(0).gameObject;
 	}
 
 	// Update is called once per frame
@@ -31,6 +33,7 @@ public class MovePawn : MonoBehaviour
 			index++;
 			iTweenMove();
 		}
+		//transform.position = new Vector3(transform.position.x, initialY, transform.position.z);
 	}
 
 	void TranslateCommand()
@@ -54,8 +57,8 @@ public class MovePawn : MonoBehaviour
 
 	void iTweenMove()
 	{
-		//iTween.MoveBy(pawn, iTween.Hash("y", lobHeight, "time", lobTime/2, "easeType", iTween.EaseType.easeOutQuad));
-		//iTween.MoveBy(pawn, iTween.Hash("y", -lobHeight, "time", lobTime/2, "delay", lobTime/2, "easeType", iTween.EaseType.easeInCubic));     
-		iTween.MoveTo(pawn, iTween.Hash("position", pawnDestination, "time", lobTime, "easeType", iTween.EaseType.linear, "onComplete", "RunSimulation"));
+		iTween.MoveBy(pawn, iTween.Hash("z", lobHeight, "time", lobTime/2, "easeType", iTween.EaseType.easeOutQuad));
+		iTween.MoveBy(pawn, iTween.Hash("z", -lobHeight, "time", 0.38f, "delay", lobTime/2, "easeType", iTween.EaseType.easeInCubic));     
+		iTween.MoveTo(gameObject, iTween.Hash("position", pawnDestination, "time", lobTime, "easeType", iTween.EaseType.linear, "onComplete", "RunSimulation"));
 	}
 }
