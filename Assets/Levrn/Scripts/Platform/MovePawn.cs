@@ -58,7 +58,7 @@ public class MovePawn : MonoBehaviour
 	void iTweenMove()
 	{
 		iTween.MoveBy(pawn, iTween.Hash("z", lobHeight, "time", lobTime/2, "easeType", iTween.EaseType.easeOutQuad));
-		iTween.MoveBy(pawn, iTween.Hash("z", -lobHeight, "time", 0.38f, "delay", lobTime/2, "easeType", iTween.EaseType.easeInCubic));     
+		iTween.MoveBy(pawn, iTween.Hash("z", -lobHeight, "time", 0.35f, "delay", lobTime/2, "easeType", iTween.EaseType.easeInCubic));     
 		iTween.MoveTo(gameObject, iTween.Hash("position", pawnDestination, "time", lobTime, "easeType", iTween.EaseType.linear, "onComplete", "RunSimulation"));
 	}
 }

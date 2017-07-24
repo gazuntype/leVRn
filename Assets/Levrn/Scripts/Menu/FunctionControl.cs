@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using LevrnScripts;
 
 public class FunctionControl : MonoBehaviour {
+	public GameObject del;
+	public GameObject run;
 
 	[HideInInspector]
 	public static List<Function> queuedFunctions = new List<Function>();
@@ -23,8 +25,11 @@ public class FunctionControl : MonoBehaviour {
 
 	public void ClickedMoveForward()
 	{
-		Debug.Log("Clicked");
-		Debug.Log(queuedFunctions.Count);
+		if (queuedFunctions.Count == 0)
+		{
+			del.SetActive(true);
+			run.SetActive(true);
+		}
 		Function function = new Function("moveForward()", Function.FunctionType.moveForward);
 		entree[queuedFunctions.Count].text = function.FunctionName;
 		queuedFunctions.Add(function);
@@ -32,8 +37,11 @@ public class FunctionControl : MonoBehaviour {
 
 	public void ClickedMoveLeft()
 	{
-		Debug.Log("Clicked");
-		Debug.Log(queuedFunctions.Count);
+		if (queuedFunctions.Count == 0)
+		{
+			del.SetActive(true);
+			run.SetActive(true);
+		}
 		Function function = new Function("moveLeft()", Function.FunctionType.moveLeft);
 		entree[queuedFunctions.Count].text = function.FunctionName;
 		queuedFunctions.Add(function);
@@ -41,8 +49,11 @@ public class FunctionControl : MonoBehaviour {
 
 	public void ClickedMoveRight()
 	{
-		Debug.Log("Clicked");
-		Debug.Log(queuedFunctions.Count);
+		if (queuedFunctions.Count == 0)
+		{
+			del.SetActive(true);
+			run.SetActive(true);
+		}
 		Function function = new Function("moveRight()", Function.FunctionType.moveRight);
 		entree[queuedFunctions.Count].text = function.FunctionName;
 		queuedFunctions.Add(function);
@@ -50,8 +61,11 @@ public class FunctionControl : MonoBehaviour {
 
 	public void ClickedMoveBack()
 	{
-		Debug.Log("Clicked");
-		Debug.Log(queuedFunctions.Count);
+		if (queuedFunctions.Count == 0)
+		{
+			del.SetActive(true);
+			run.SetActive(true);
+		}
 		Function function = new Function("moveBack()", Function.FunctionType.moveBack);
 		entree[queuedFunctions.Count].text = function.FunctionName;
 		queuedFunctions.Add(function);
@@ -61,5 +75,10 @@ public class FunctionControl : MonoBehaviour {
 	{
 		entree[queuedFunctions.Count - 1].text = "";
 		queuedFunctions.RemoveAt(queuedFunctions.Count - 1);
+		if (queuedFunctions.Count == 0)
+		{
+			del.SetActive(false);
+			run.SetActive(false);
+		}
 	}
 }
