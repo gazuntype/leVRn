@@ -68,7 +68,7 @@ namespace LevrnScripts
 			GameObject player = GameObject.Instantiate(player2);
 			player.transform.localScale = new Vector3(platform.layout.squares[0].squareSize.x, platform.layout.squares[0].squareSize.x, platform.layout.squares[0].squareSize.x);
 			player.transform.SetParent(worldLocation);
-			player.transform.position = GameObject.FindGameObjectWithTag("Start").transform.position + new Vector3(0, player.GetComponent<Renderer>().bounds.extents.y, 0);
+			player.transform.position = GameObject.FindGameObjectWithTag("Start").transform.position + new Vector3(0, player.GetComponentInChildren<Renderer>().bounds.extents.y, 0);
 			return platform;
 		}
 
@@ -97,7 +97,7 @@ namespace LevrnScripts
 			GameObject.Instantiate(player);
 			player.transform.localScale = new Vector3(platform.layout.squares[0].squareSize.x, platform.layout.squares[0].squareSize.x, platform.layout.squares[0].squareSize.x);
 			player.transform.SetParent(worldLocation);
-			player.transform.position = GameObject.FindGameObjectWithTag("Start").transform.position + new Vector3(0, player.GetComponent<Renderer>().bounds.extents.y, 0);
+			player.transform.position = GameObject.FindGameObjectWithTag("Start").transform.position + new Vector3(0, player.GetComponentInChildren<Renderer>().bounds.extents.y, 0);
 			return platform;
 		}
 
@@ -123,7 +123,7 @@ namespace LevrnScripts
 			}
 			GameObject.Instantiate(player);
 			player.transform.localScale = new Vector3(platform.layout.squares[0].squareSize.x, platform.layout.squares[0].squareSize.x, platform.layout.squares[0].squareSize.x);
-			player.transform.position = GameObject.FindGameObjectWithTag("Start").transform.position + new Vector3(0, player.GetComponent<Renderer>().bounds.extents.y, 0);
+			player.transform.position = GameObject.FindGameObjectWithTag("Start").transform.position + new Vector3(0, player.GetComponentInChildren<Renderer>().bounds.extents.y, 0);
 			return platform;
 		}
 	}
