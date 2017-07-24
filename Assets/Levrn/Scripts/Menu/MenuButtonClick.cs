@@ -26,7 +26,11 @@ public class MenuButtonClick : MonoBehaviour
 
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.tag == "button" && other.bounds.size.z <= 0.05)
+		if (other.tag == "button")
+		{
+			Debug.Log(other.material.name);
+		}
+		if (other.tag == "button" && other.material.name == "True (Instance)" )
 		{
 			Debug.Log("Collided with the button");
 			front = CheckIfObjectIsInFront(other.transform, transform);
@@ -37,7 +41,7 @@ public class MenuButtonClick : MonoBehaviour
 		}	}
 
 	void OnTriggerExit(Collider other){
-		if (other.tag == "button" && other.bounds.size.z <= 0.05)
+		if (other.tag == "button" && other.material.name == "True (Instance)")
 		{
 			Debug.Log("Collided with the button");
 			front = CheckIfObjectIsInFront(other.transform, transform);
