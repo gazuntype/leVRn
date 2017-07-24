@@ -59,7 +59,7 @@ public class FunctionControl : MonoBehaviour {
 
 	public void Del()
 	{
-		entree[queuedFunctions.Count].text = "";
+		entree[queuedFunctions.Count - 1].text = "";
 		queuedFunctions.RemoveAt(queuedFunctions.Count - 1);
 	}
 }
