@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class MenuButtonClick : MonoBehaviour
@@ -23,14 +24,27 @@ public class MenuButtonClick : MonoBehaviour
 	
 	}
 
+	void OnTriggerEnter(Collider other)
+	{
+		if (other.tag == "button" && other.bounds.size.z <= 0.03)
+		{
+			Debug.Log("Collided with the button");
+			front = CheckIfObjectIsInFront(other.transform, transform);
+			if (front)
+			{
+				FeedbackFromButton(other.gameObject);
+			}
+		}	}
+
 	void OnTriggerExit(Collider other){
-		if (other.tag == "button" && other.bounds.size.z <= 0.025)
+		if (other.tag == "button" && other.bounds.size.z <= 0.03)
 		{
 			Debug.Log("Collided with the button");
 			front = CheckIfObjectIsInFront(other.transform, transform);
 			if (front)
 			{
 				ButtonClicked(other.name);
+				ButtonDimmer.canChange = true;
 			}
 		}
 	}
@@ -49,6 +63,14 @@ public class MenuButtonClick : MonoBehaviour
 			inFront = false;
 		}
 		return inFront;
+	}
+
+	void FeedbackFromButton(GameObject buttonUsed)
+	{
+		Image buttonImage = buttonUsed.GetComponent<Image>();
+		ButtonDimmer.canChange = false;
+		buttonImage.color = Color.blue;
+
 	}
 
 	void ButtonClicked(string buttonName)

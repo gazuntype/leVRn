@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ButtonDimmer : MonoBehaviour {
+	public static bool canChange = true;
+
 	float distance;
 	float distance2;
 	public GameObject finger;
@@ -41,7 +43,7 @@ public class ButtonDimmer : MonoBehaviour {
 			closestDistance = distance2;
 		}
 
-		if (closestDistance < maxDistance && fingerClose)
+		if (closestDistance < maxDistance && fingerClose && canChange)
 		{
 			buttonImage.color = GetImageColour();
 		}
