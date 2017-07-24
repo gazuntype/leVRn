@@ -15,7 +15,9 @@ public class ButtonDimmer : MonoBehaviour {
 	Color originalColor;
 	Color finalColor;
 	float maxDistance;
+	bool fingerClose;
 	// Use this for initialization
+
 	void Start () {
 		maxDistance = 0.14f;
 		buttonImage = GetComponent<Image>();
@@ -39,14 +41,31 @@ public class ButtonDimmer : MonoBehaviour {
 			closestDistance = distance2;
 		}
 
-		if (closestDistance < maxDistance && CheckFingerHeight(closestFinger))
+		if (closestDistance < maxDistance && fingerClose)
 		{
 			buttonImage.color = GetImageColour();
 		}
 
-		if (!CheckFingerHeight(closestFinger))
+		if (!fingerClose)
 		{
 			buttonImage.color = originalColor;
+		}
+	}
+
+	void OnTriggerEnter(Collider other)
+	{
+		if (other.tag == "finger")
+		{
+			Debug.Log("Finger collided with collider");
+			fingerClose = true;
+		}
+	}
+
+	void OnTriggerExit(Collider other)
+	{
+		if (other.tag == "finger")
+		{
+			fingerClose = false;
 		}
 	}
 

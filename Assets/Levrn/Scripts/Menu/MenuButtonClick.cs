@@ -24,7 +24,7 @@ public class MenuButtonClick : MonoBehaviour
 	}
 
 	void OnTriggerExit(Collider other){
-		if (other.tag == "button")
+		if (other.tag == "button" && other.bounds.size.z <= 0.025)
 		{
 			Debug.Log("Collided with the button");
 			front = CheckIfObjectIsInFront(other.transform, transform);
