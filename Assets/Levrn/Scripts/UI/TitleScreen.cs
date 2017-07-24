@@ -12,6 +12,7 @@ public class TitleScreen : MonoBehaviour {
 	public GameObject methodCanvas;
 	public GameObject dashboardCanvas;
 	public GameObject gameController;
+	public GameObject settingCanvas;
 
 	public Text instruction;
 
@@ -50,6 +51,11 @@ public class TitleScreen : MonoBehaviour {
 		menuScreen.SetActive(false);
 		levelScreen.SetActive(true);
 		state = UIStates.level;
+	}
+
+	public void ClickedSettings()
+	{
+		settingScreen.SetActive(true);
 	}
 
 	public void ClickedFunctions()
