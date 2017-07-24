@@ -13,16 +13,6 @@ public class FunctionControl : MonoBehaviour {
 
 	public Text[] entree;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
 	public void ClickedMoveForward()
 	{
 		if (queuedFunctions.Count == 0)

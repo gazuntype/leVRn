@@ -11,12 +11,14 @@ public class MenuButtonClick : MonoBehaviour
 	GameObject rigController;
 	FunctionControl functionControl;
 	TitleScreen titleScreen;
+	SettingsControl settingsControl;
 	bool front;
 	// Use this for initialization
 	void Start () {
 		rigController = GameObject.Find("RigController");
 		titleScreen = rigController.GetComponent<TitleScreen>();
 		functionControl = rigController.GetComponent<FunctionControl>();
+		settingsControl = rigController.GetComponent<SettingsControl>();
 	}
 	
 	// Update is called once per frame
@@ -106,12 +108,30 @@ public class MenuButtonClick : MonoBehaviour
 			case "Back":
 				titleScreen.PreviousInstruction();
 				break;
+			case "Cancel":
+				titleScreen.ClickedCancel();
+				break;
 			case "Run":
 				MovePawn movePawn = GameObject.FindGameObjectWithTag("pawn").GetComponent<MovePawn>();
 				movePawn.RunSimulation();
 				break;
 			case "Del":
 				functionControl.Del();
+				break;
+			case "Settings":
+				titleScreen.ClickedSettings();
+				break;
+			case "Blue":
+				settingsControl.ChangeTheme(SettingsControl.Theme.blue);
+				break;
+			case "Red":
+				settingsControl.ChangeTheme(SettingsControl.Theme.red);
+				break;
+			case "Pink":
+				settingsControl.ChangeTheme(SettingsControl.Theme.pink);
+				break;
+			case "White":
+				settingsControl.ChangeTheme(SettingsControl.Theme.white);
 				break;
 		}
 	}

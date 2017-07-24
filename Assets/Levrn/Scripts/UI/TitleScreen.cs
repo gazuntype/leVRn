@@ -34,9 +34,6 @@ public class TitleScreen : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
-	}
 
 	IEnumerator FadeWelcomeScreen()
 	{
@@ -55,7 +52,14 @@ public class TitleScreen : MonoBehaviour {
 
 	public void ClickedSettings()
 	{
-		settingScreen.SetActive(true);
+		settingCanvas.SetActive(true);
+		menuCanvas.SetActive(false);
+	}
+
+	public void ClickedCancel()
+	{
+		settingCanvas.SetActive(false);
+		menuCanvas.SetActive(true);
 	}
 
 	public void ClickedFunctions()
