@@ -26,7 +26,7 @@ public class MenuButtonClick : MonoBehaviour
 
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.tag == "button" && other.bounds.size.z <= 0.03)
+		if (other.tag == "button" && other.bounds.size.z <= 0.05)
 		{
 			Debug.Log("Collided with the button");
 			front = CheckIfObjectIsInFront(other.transform, transform);
@@ -37,7 +37,7 @@ public class MenuButtonClick : MonoBehaviour
 		}	}
 
 	void OnTriggerExit(Collider other){
-		if (other.tag == "button" && other.bounds.size.z <= 0.03)
+		if (other.tag == "button" && other.bounds.size.z <= 0.05)
 		{
 			Debug.Log("Collided with the button");
 			front = CheckIfObjectIsInFront(other.transform, transform);
@@ -69,6 +69,7 @@ public class MenuButtonClick : MonoBehaviour
 	{
 		Image buttonImage = buttonUsed.GetComponent<Image>();
 		ButtonDimmer.canChange = false;
+		Color darkGreen = new Vector4(0, 100, 0, 1);
 		buttonImage.color = Color.blue;
 
 	}
