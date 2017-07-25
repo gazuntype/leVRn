@@ -7,6 +7,7 @@ public class MovePawn : MonoBehaviour
 {
 	GameObject pawn;
 
+	RaycastHit hit;
 	float initialY;
 	int index = 0;
 	Vector3 pawnDestination;
@@ -33,7 +34,28 @@ public class MovePawn : MonoBehaviour
 			index++;
 			iTweenMove();
 		}
+        CheckPlatformBeneath();
 		//transform.position = new Vector3(transform.position.x, initialY, transform.position.z);
+	}
+
+	void CheckPlatformBeneath()
+	{
+		if (Physics.Raycast(transform.position, Vector3.down, out hit))
+		{
+			Debug.DrawRay(transform.position, -transform.up, Color.red, 5);
+			if (hit.transform.name == "Cube")
+			{
+				Debug.Log("Still on platform");
+			}
+			else
+			{
+				Destroy(gameObject);
+			}
+		}
+		else
+		{
+			Debug.Log("No hit");
+		}
 	}
 
 	void TranslateCommand()

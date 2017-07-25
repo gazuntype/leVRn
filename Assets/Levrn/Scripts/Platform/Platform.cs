@@ -47,6 +47,7 @@ namespace LevrnScripts
 			foreach (Square square in platform.layout.squares)
 			{
 				GameObject primitiveSquare = GameObject.CreatePrimitive(PrimitiveType.Cube);
+				primitiveSquare.tag = "platform";
 				primitiveSquare.transform.localScale = square.squareSize;
 				primitiveSquare.transform.parent = worldLocation;
 				primitiveSquare.transform.localPosition = Vector3.Scale(new Vector3(square.positionx, 0, square.positiony),square.squareSize);
@@ -77,6 +78,8 @@ namespace LevrnScripts
 			foreach (Square square in platform.layout.squares)
 			{
 				GameObject primitiveSquare = GameObject.CreatePrimitive(PrimitiveType.Cube);
+				primitiveSquare.tag = "platform";
+				primitiveSquare.AddComponent<BoxCollider>();
 				primitiveSquare.transform.localScale = square.squareSize;
 				primitiveSquare.transform.parent = worldLocation;
 				primitiveSquare.transform.localPosition = Vector3.Scale(new Vector3(square.positionx, 0, square.positiony), square.squareSize);
@@ -106,6 +109,7 @@ namespace LevrnScripts
 			foreach (Square square in platform.layout.squares)
 			{
 				GameObject primitiveSquare = GameObject.Instantiate(cube);
+				primitiveSquare.tag = "platform";
 				primitiveSquare.transform.parent = worldLocation;
 				primitiveSquare.transform.localPosition = Vector3.Scale(new Vector3(square.positionx, 0, square.positiony), square.squareSize);
 				switch (square.type)
