@@ -93,7 +93,7 @@ public class MovePawn : MonoBehaviour
 	IEnumerator iTweenFall()
 	{
 		yield return new WaitForSeconds(0.1f);
-		iTween.MoveTo(gameObject, iTween.Hash("position", transform.position + (Vector3.down * 10), "speed", 2, "easeType", iTween.EaseType.easeInCubic));
+		iTween.MoveTo(gameObject, iTween.Hash("position", transform.position + (Vector3.down * 10), "speed", 5, "easeType", iTween.EaseType.easeOutQuad));
 	}
 
 	public void ReturnToStart()

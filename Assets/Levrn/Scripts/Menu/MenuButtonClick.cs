@@ -40,7 +40,8 @@ public class MenuButtonClick : MonoBehaviour
 			{
 				FeedbackFromButton(other.gameObject);
 			}
-		}	}
+		}
+	}
 
 	void OnTriggerExit(Collider other){
 		if (other.tag == "button" && other.material.name == "True (Instance)")
@@ -120,6 +121,9 @@ public class MenuButtonClick : MonoBehaviour
 				break;
 			case "Settings":
 				titleScreen.ClickedSettings();
+				break;
+			case "Restart":
+				titleScreen.Restart();
 				break;
 			case "Blue":
 				settingsControl.ChangeTheme(SettingsControl.Theme.blue);
