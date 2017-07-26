@@ -8,6 +8,7 @@ public class TitleScreen : MonoBehaviour {
 	public GameObject menuScreen;
 	public GameObject levelScreen;
 	public GameObject functionScreen;
+	public GameObject loseScreen;
 	public GameObject menuCanvas;
 	public GameObject methodCanvas;
 	public GameObject dashboardCanvas;
@@ -73,6 +74,12 @@ public class TitleScreen : MonoBehaviour {
 		CanvasAnimations.MoveCanvas(dashboardCanvas, new Vector3(0, 0, 0.35f));
 		CanvasAnimations.MoveCanvas(methodCanvas, new Vector3(0.24f, 0, 0.25f));
 		state = UIStates.function;
+	}
+
+	public void FailedChallenge()
+	{
+		functionScreen.SetActive(false);
+		loseScreen.SetActive(true);
 	}
 
 	public void NextInstruction()

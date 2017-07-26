@@ -6,7 +6,9 @@ using LevrnScripts;
 public class MovePawn : MonoBehaviour
 {
 	GameObject pawn;
+	GameObject rigController;
 
+	TitleScreen titleScreen;
 	RaycastHit hit;
 	float initialY;
 	int index = 0;
@@ -18,6 +20,8 @@ public class MovePawn : MonoBehaviour
 	{
 		initialY = transform.position.y;
 		pawn = transform.GetChild(0).gameObject;
+		rigController = GameObject.Find("RigController");
+		titleScreen = rigController.GetComponent<TitleScreen>();
 	}
 
 	// Update is called once per frame
@@ -49,7 +53,9 @@ public class MovePawn : MonoBehaviour
 			}
 			else
 			{
-				Destroy(gameObject);
+				titleScreen.FailedChallenge();
+				iTween.Stop(gameObject);
+				StartCoroutine(iTweenFall());
 			}
 		}
 		else
@@ -82,5 +88,11 @@ public class MovePawn : MonoBehaviour
 		iTween.MoveBy(pawn, iTween.Hash("z", lobHeight, "time", lobTime/2, "easeType", iTween.EaseType.easeOutQuad));
 		iTween.MoveBy(pawn, iTween.Hash("z", -lobHeight, "time", 0.35f, "delay", lobTime/2, "easeType", iTween.EaseType.easeInCubic));     
 		iTween.MoveTo(gameObject, iTween.Hash("position", pawnDestination, "time", lobTime, "easeType", iTween.EaseType.linear, "onComplete", "RunSimulation"));
+	}
+
+	IEnumerator iTweenFall()
+	{
+		yield return new WaitForSeconds(0.1f);
+		iTween.MoveTo(gameObject, iTween.Hash("position", transform.position + (Vector3.down * 10), "speed", 2, "easeType", iTween.EaseType.easeInCubic));
 	}
 }
