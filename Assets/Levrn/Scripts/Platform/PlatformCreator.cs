@@ -33,7 +33,7 @@ public class PlatformCreator : MonoBehaviour {
 		squares.Add(new Square(SquareType.Normal, squareSize, 1, -1));
 		squares.Add(new Square(SquareType.Normal, squareSize, 1, -2));
 		squares.Add(new Square(SquareType.Normal, squareSize, 2, -2));
-		squares.Add(new Square(SquareType.Normal, squareSize, 3, -2));
+		squares.Add(new Square(SquareType.End, squareSize, 3, -2));
 		return squares;
 	}
 }

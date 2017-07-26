@@ -38,6 +38,10 @@ public class MovePawn : MonoBehaviour
 			index++;
 			iTweenMove();
 		}
+		else
+		{
+			CheckPlatformBeneath(true);
+		}
         CheckPlatformBeneath();
 		//transform.position = new Vector3(transform.position.x, initialY, transform.position.z);
 	}
@@ -49,11 +53,12 @@ public class MovePawn : MonoBehaviour
 			Debug.DrawRay(transform.position, -transform.up, Color.red, 5);
 			if (hit.transform.name == "Cube")
 			{
-				Debug.Log("Still on platform");
+				
 			}
 			else
 			{
 				titleScreen.FailedChallenge();
+				index = 0;
 				iTween.Stop(gameObject);
 				StartCoroutine(iTweenFall());
 			}
@@ -61,6 +66,21 @@ public class MovePawn : MonoBehaviour
 		else
 		{
 			Debug.Log("No hit");
+		}
+	}
+
+	void CheckPlatformBeneath(bool end)
+	{
+		if (end)
+		{
+			if (Physics.Raycast(transform.position, Vector3.down, out hit))
+			{
+				if (hit.transform.tag != "End")
+				{
+					titleScreen.FailedChallenge();
+					index = 0;
+				}
+			}
 		}
 	}
 
@@ -93,7 +113,7 @@ public class MovePawn : MonoBehaviour
 	IEnumerator iTweenFall()
 	{
 		yield return new WaitForSeconds(0.1f);
-		iTween.MoveTo(gameObject, iTween.Hash("position", transform.position + (Vector3.down * 10), "speed", 5, "easeType", iTween.EaseType.easeOutQuad));
+		iTween.MoveTo(gameObject, iTween.Hash("position", transform.position + (Vector3.down * 10), "speed", 2, "easeType", iTween.EaseType.easeOutQuad));
 	}
 
 	public void ReturnToStart()

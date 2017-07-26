@@ -59,6 +59,9 @@ namespace LevrnScripts
 					case SquareType.Start:
 						primitiveSquare.tag = "Start";
 						break;
+					case SquareType.End:
+						primitiveSquare.tag = "End";
+						break;
 					case SquareType.Mystery:
 						primitiveSquare.tag = "Mystery";
 						break;
@@ -90,6 +93,9 @@ namespace LevrnScripts
 					case SquareType.Start:
 						primitiveSquare.tag = "Start";
 						break;
+					case SquareType.End:
+						primitiveSquare.tag = "End";
+						break;
 					case SquareType.Mystery:
 						primitiveSquare.tag = "Mystery";
 						break;
@@ -116,6 +122,9 @@ namespace LevrnScripts
 						break;
 					case SquareType.Start:
 						primitiveSquare.tag = "Start";
+						break;
+					case SquareType.End:
+						primitiveSquare.tag = "End";
 						break;
 					case SquareType.Mystery:
 						primitiveSquare.tag = "Mystery";
