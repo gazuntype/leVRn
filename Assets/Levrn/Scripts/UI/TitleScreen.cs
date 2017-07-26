@@ -21,6 +21,8 @@ public class TitleScreen : MonoBehaviour {
 	[TextArea]
 	public string[] functionInstruction;
 
+	GameObject rigController;
+	FunctionControl functionControl;
 
 	int index = 1;
 	UIStates state;
@@ -29,6 +31,8 @@ public class TitleScreen : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		rigController = GameObject.Find("RigController");
+		functionControl = GetComponent<FunctionControl>();
 		fadeOutTime = 3;
 		state = UIStates.title;
 		StartCoroutine(FadeWelcomeScreen());
@@ -106,6 +110,17 @@ public class TitleScreen : MonoBehaviour {
 			index--;
 		}
 		instruction.text = functionInstruction[index];
+	}
+
+	public void Restart()
+	{
+		loseScreen.SetActive(false);
+		functionScreen.SetActive(true);
+		GameObject player = GameObject.FindGameObjectWithTag("pawn");
+		MovePawn movePawn;
+		movePawn = player.GetComponent<MovePawn>();
+		movePawn.ReturnToStart();
+		functionControl.DeleteAll();
 	}
 
 

@@ -95,4 +95,9 @@ public class MovePawn : MonoBehaviour
 		yield return new WaitForSeconds(0.1f);
 		iTween.MoveTo(gameObject, iTween.Hash("position", transform.position + (Vector3.down * 10), "speed", 2, "easeType", iTween.EaseType.easeInCubic));
 	}
+
+	public void ReturnToStart()
+	{
+		transform.position = GameObject.FindGameObjectWithTag("Start").transform.position + new Vector3(0, pawn.GetComponentInChildren<Renderer>().bounds.extents.y, 0);
+	}
 }

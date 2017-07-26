@@ -71,4 +71,13 @@ public class FunctionControl : MonoBehaviour {
 			run.SetActive(false);
 		}
 	}
+
+	public void DeleteAll()
+	{
+		foreach (Text text in entree)
+		{
+			text.text = "";
+		}
+		queuedFunctions.Clear();
+	}
 }
