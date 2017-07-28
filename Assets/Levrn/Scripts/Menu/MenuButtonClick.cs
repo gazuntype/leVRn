@@ -137,6 +137,9 @@ public class MenuButtonClick : MonoBehaviour
 			case "White":
 				settingsControl.ChangeTheme(SettingsControl.Theme.white);
 				break;
+			case "Black":
+				settingsControl.ChangeTheme(SettingsControl.Theme.black);
+				break;
 		}
 	}
 
