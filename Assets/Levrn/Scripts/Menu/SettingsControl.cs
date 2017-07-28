@@ -5,22 +5,38 @@ using UnityEngine.UI;
 
 public class SettingsControl : MonoBehaviour {
 	[HideInInspector]
-	public static Theme backgroundTheme;
+	public static Theme backgroundTheme = Theme.black;
 
 	[HideInInspector]
-	public static Theme textTheme;
+	public static Theme textTheme = Theme.black;
 
 	[HideInInspector]
-	public static Theme buttonTheme;
+	public static Theme buttonTheme = Theme.white;
 
+	public static Material change;
 	public Image[] background;
 
-	public Material textMaterial, buttonMaterial, backgroundMaterial;
+	[Header("Materials")]
+	public Material textMaterial;
+	public Material buttonMaterial;
+	public Material backgroundMaterial;
+	public Material titleMaterial;
+	public Material changeButton;
 
 	[Header("Preview Objects")]
+	public Text previewTitle;
 	public Image previewBackground;
 	public Text previewText;
 	public Image previewButton;
+
+	void Start()
+	{
+		change = changeButton;
+		textMaterial.color = ThemeConverter(textTheme);
+		buttonMaterial.color = ThemeConverter(buttonTheme);
+		backgroundMaterial.color = ThemeConverter(backgroundTheme);
+		titleMaterial.color = ThemeConverter(Theme.white);
+	}
 
 
 	public void ChangeTheme(Theme colour, GameObject child = null)
@@ -29,10 +45,15 @@ public class SettingsControl : MonoBehaviour {
 		{
 			backgroundTheme = colour;
 			previewBackground.color = ThemeConverter(backgroundTheme);
+			if (backgroundTheme == Theme.white)
+			{
+				previewTitle.color = ThemeConverter(Theme.black);
+			}
 		}
 		else if (child.transform.parent.name == "Buttons")
 		{
 			buttonTheme = colour;
+			Debug.Log("I was called");
 			previewButton.color = ThemeConverter(buttonTheme);
 		}
 		else if (child.transform.parent.name == "Text")
@@ -50,6 +71,10 @@ public class SettingsControl : MonoBehaviour {
 		}
 		buttonMaterial.color = ThemeConverter(buttonTheme);
 		textMaterial.color = ThemeConverter(textTheme);
+		if (backgroundTheme == Theme.white)
+		{
+			titleMaterial.color = ThemeConverter(Theme.black);
+		}
 	}
 
 

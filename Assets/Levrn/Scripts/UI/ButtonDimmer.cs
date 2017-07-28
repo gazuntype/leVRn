@@ -18,6 +18,7 @@ public class ButtonDimmer : MonoBehaviour {
 	Color finalColor;
 	float maxDistance;
 	bool fingerClose;
+	Material originalMaterial;
 	// Use this for initialization
 
 	void Start () {
@@ -25,6 +26,7 @@ public class ButtonDimmer : MonoBehaviour {
 		buttonImage = GetComponent<Image>();
 		originalColor = buttonImage.color;
 		finalColor = Color.green;
+		originalMaterial = buttonImage.material;
 	}
 	
 	// Update is called once per frame
@@ -45,11 +47,13 @@ public class ButtonDimmer : MonoBehaviour {
 
 		if (closestDistance < maxDistance && fingerClose && canChange)
 		{
+			buttonImage.material = SettingsControl.change;
 			buttonImage.color = GetImageColour();
 		}
 
 		if (!fingerClose)
 		{
+			buttonImage.material = originalMaterial;
 			buttonImage.color = originalColor;
 		}
 	}

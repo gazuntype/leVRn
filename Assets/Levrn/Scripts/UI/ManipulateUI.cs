@@ -57,7 +57,7 @@ public class ManipulateUI : MonoBehaviour {
 		dataTracker.transform.position = new Vector3(0, 0, 0);
 		if (dashBackground != null)
 		{
-			dashBackground.color = Color.black;
+			dashBackground.color = SettingsControl.ThemeConverter(SettingsControl.backgroundTheme);
 		}
 		zoomInitialPos.Clear();
 		Debug.Log("Pinch was released");
@@ -116,7 +116,7 @@ public class ManipulateUI : MonoBehaviour {
 	void OnTriggerExit(Collider other)
 	{
 		onZoom = false;
-		dashBackground.color = Color.black;
+		dashBackground.color = SettingsControl.ThemeConverter(SettingsControl.backgroundTheme);
 		dashBackground = null;
 		movingDash = null;
 		onPinch = false;
