@@ -59,13 +59,15 @@ public class TitleScreen : MonoBehaviour {
 	public void ClickedSettings()
 	{
 		settingCanvas.SetActive(true);
+		settingCanvas.transform.position = menuCanvas.transform.position;
 		menuCanvas.SetActive(false);
 	}
 
 	public void ClickedCancel()
 	{
-		settingCanvas.SetActive(false);
 		menuCanvas.SetActive(true);
+		menuCanvas.transform.position = settingCanvas.transform.position;
+		settingCanvas.SetActive(false);
 	}
 
 	public void ClickedFunctions()
@@ -84,12 +86,14 @@ public class TitleScreen : MonoBehaviour {
 	public void FailedChallenge()
 	{
 		functionScreen.SetActive(false);
+		winScreen.SetActive(false);
 		loseScreen.SetActive(true);
 	}
 
 	public void CompletedChallenge()
 	{
 		functionScreen.SetActive(false);
+		loseScreen.SetActive(false);
 		winScreen.SetActive(true);
 	}
 
