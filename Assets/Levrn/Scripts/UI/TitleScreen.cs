@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class TitleScreen : MonoBehaviour {
 
@@ -88,6 +89,13 @@ public class TitleScreen : MonoBehaviour {
 		functionScreen.SetActive(false);
 		winScreen.SetActive(false);
 		loseScreen.SetActive(true);
+	}
+
+	public void Explore()
+	{
+		Network.Disconnect();
+		SceneManager.LoadScene("offlineLobby");
+
 	}
 
 	public void CompletedChallenge()

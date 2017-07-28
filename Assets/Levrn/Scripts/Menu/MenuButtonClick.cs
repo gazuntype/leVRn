@@ -143,6 +143,9 @@ public class MenuButtonClick : MonoBehaviour
 			case "Apply":
 				settingsControl.ApplySettings();
 				break;
+			case "Explore":
+				titleScreen.Explore();
+				break;
 		}
 	}
 
