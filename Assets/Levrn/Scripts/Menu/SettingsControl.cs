@@ -17,27 +17,39 @@ public class SettingsControl : MonoBehaviour {
 
 	public Material textMaterial, buttonMaterial, backgroundMaterial;
 
+	[Header("Preview Objects")]
+	public Image previewBackground;
+	public Text previewText;
+	public Image previewButton;
+
 
 	public void ChangeTheme(Theme colour, GameObject child = null)
 	{
 		if (child.transform.parent.name == "Background")
 		{
 			backgroundTheme = colour;
-			foreach (Image back in background)
-			{
-				back.color = ThemeConverter(backgroundTheme);
-			}
+			previewBackground.color = ThemeConverter(backgroundTheme);
 		}
 		else if (child.transform.parent.name == "Buttons")
 		{
 			buttonTheme = colour;
-			buttonMaterial.color = ThemeConverter(buttonTheme);
+			previewButton.color = ThemeConverter(buttonTheme);
 		}
 		else if (child.transform.parent.name == "Text")
 		{
 			textTheme = colour;
-			textMaterial.color = ThemeConverter(textTheme);
+			previewText.color = ThemeConverter(textTheme);
 		}
+	}
+
+	public void ApplySettings()
+	{
+		foreach (Image back in background)
+		{
+			back.color = ThemeConverter(backgroundTheme);
+		}
+		buttonMaterial.color = ThemeConverter(buttonTheme);
+		textMaterial.color = ThemeConverter(textTheme);
 	}
 
 
