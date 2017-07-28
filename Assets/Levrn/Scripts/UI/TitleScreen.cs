@@ -9,6 +9,7 @@ public class TitleScreen : MonoBehaviour {
 	public GameObject levelScreen;
 	public GameObject functionScreen;
 	public GameObject loseScreen;
+	public GameObject winScreen;
 	public GameObject menuCanvas;
 	public GameObject methodCanvas;
 	public GameObject dashboardCanvas;
