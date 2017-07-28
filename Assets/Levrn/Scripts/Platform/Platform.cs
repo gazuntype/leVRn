@@ -61,6 +61,7 @@ namespace LevrnScripts
 						break;
 					case SquareType.End:
 						primitiveSquare.tag = "End";
+						primitiveSquare.GetComponent<Renderer>().material.color = Color.red;
 						break;
 					case SquareType.Mystery:
 						primitiveSquare.tag = "Mystery";

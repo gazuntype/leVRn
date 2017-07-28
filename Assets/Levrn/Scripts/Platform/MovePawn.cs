@@ -80,6 +80,12 @@ public class MovePawn : MonoBehaviour
 					titleScreen.FailedChallenge();
 					index = 0;
 				}
+				else
+				{
+					hit.transform.gameObject.GetComponent<Renderer>().material.color = Color.green;
+					titleScreen.CompletedChallenge();
+					index = 0;
+				}
 			}
 		}
 	}

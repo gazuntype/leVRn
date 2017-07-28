@@ -87,6 +87,12 @@ public class TitleScreen : MonoBehaviour {
 		loseScreen.SetActive(true);
 	}
 
+	public void CompletedChallenge()
+	{
+		functionScreen.SetActive(false);
+		winScreen.SetActive(true);
+	}
+
 	public void NextInstruction()
 	{
 		if (index == functionInstruction.Length - 1)
