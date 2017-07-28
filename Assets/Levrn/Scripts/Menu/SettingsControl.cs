@@ -23,7 +23,10 @@ public class SettingsControl : MonoBehaviour {
 		if (child.transform.parent.name == "Background")
 		{
 			backgroundTheme = colour;
-			backgroundMaterial.color = ThemeConverter(backgroundTheme);
+			foreach (Image back in background)
+			{
+				back.color = ThemeConverter(backgroundTheme);
+			}
 		}
 		else if (child.transform.parent.name == "Buttons")
 		{
