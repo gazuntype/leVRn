@@ -22,7 +22,9 @@ public class SettingsControl : MonoBehaviour {
 			case Theme.blue:
 				foreach (Image back in background)
 				{
-					back.color = Color.blue;
+					Color blue;
+					blue = new Vector4(0, 255, 244, 255);
+					back.color = blue;
 				}
 				break;
 			case Theme.pink:
@@ -37,6 +39,12 @@ public class SettingsControl : MonoBehaviour {
 				foreach (Image back in background)
 				{
 					back.color = Color.white;
+				}
+				break;
+			case Theme.black:
+				foreach (Image back in background)
+				{
+					back.color = Color.black;
 				}
 				break;
 		}
