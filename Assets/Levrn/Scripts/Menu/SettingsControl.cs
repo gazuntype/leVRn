@@ -49,6 +49,10 @@ public class SettingsControl : MonoBehaviour {
 			{
 				previewTitle.color = ThemeConverter(Theme.black);
 			}
+			else
+			{
+				previewTitle.color = ThemeConverter(Theme.white);
+			}
 		}
 		else if (child.transform.parent.name == "Buttons")
 		{
@@ -74,6 +78,10 @@ public class SettingsControl : MonoBehaviour {
 		if (backgroundTheme == Theme.white)
 		{
 			titleMaterial.color = ThemeConverter(Theme.black);
+		}
+		else
+		{
+			titleMaterial.color = ThemeConverter(Theme.white);
 		}
 	}
 
