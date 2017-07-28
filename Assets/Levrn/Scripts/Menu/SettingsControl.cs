@@ -4,50 +4,69 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class SettingsControl : MonoBehaviour {
-	public Theme theme;
+	[HideInInspector]
+	public static Theme backgroundTheme;
+
+	[HideInInspector]
+	public static Theme textTheme;
+
+	[HideInInspector]
+	public static Theme buttonTheme;
 
 	public Image[] background;
 
-	public void ChangeTheme(Theme colour)
+	public Material textMaterial, buttonMaterial, backgroundMaterial;
+
+
+	public void ChangeTheme(Theme colour, GameObject child = null)
 	{
-		theme = colour;
-		switch (theme)
+		if (child.transform.parent.name == "Background")
+		{
+			backgroundTheme = colour;
+			backgroundMaterial.color = ThemeConverter(backgroundTheme);
+		}
+		else if (child.transform.parent.name == "Buttons")
+		{
+			buttonTheme = colour;
+			buttonMaterial.color = ThemeConverter(buttonTheme);
+		}
+		else if (child.transform.parent.name == "Text")
+		{
+			textTheme = colour;
+			textMaterial.color = ThemeConverter(textTheme);
+		}
+	}
+
+
+	public static Color ThemeConverter(Theme color)
+	{
+		Color correctColor;
+		switch (color)
 		{
 			case Theme.red:
-				foreach (Image back in background)
-				{
-					back.color = Color.red;
-				}
+				correctColor = Color.red;
 				break;
 			case Theme.blue:
-				foreach (Image back in background)
-				{
-					Color blue;
-					blue = new Vector4(0, 255, 244, 255);
-					back.color = blue;
-				}
+				Color blue;
+				blue = new Vector4(0, 255, 244, 255);
+				correctColor = blue;
 				break;
 			case Theme.pink:
-				foreach (Image back in background)
-				{
-					Color pink;
-					pink = new Vector4(255, 0, 248, 255);
-					back.color = pink;
-				}
-				break;
-			case Theme.white:
-				foreach (Image back in background)
-				{
-					back.color = Color.white;
-				}
+				Color pink;
+				pink = new Vector4(255, 0, 248, 255);
+				correctColor = pink;
 				break;
 			case Theme.black:
-				foreach (Image back in background)
-				{
-					back.color = Color.black;
-				}
+				correctColor = Color.black;
+				break;
+			case Theme.white:
+				correctColor = Color.white;
+				break;
+			default:
+				correctColor = Color.black;
 				break;
 		}
+		return correctColor;
 	}
 
 	public enum Theme { blue, red, black, white, pink }

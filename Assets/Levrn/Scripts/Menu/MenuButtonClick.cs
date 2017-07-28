@@ -50,7 +50,7 @@ public class MenuButtonClick : MonoBehaviour
 			front = CheckIfObjectIsInFront(other.transform, transform);
 			if (front)
 			{
-				ButtonClicked(other.name);
+				ButtonClicked(other.gameObject);
 				ButtonDimmer.canChange = true;
 			}
 		}
@@ -81,9 +81,9 @@ public class MenuButtonClick : MonoBehaviour
 
 	}
 
-	void ButtonClicked(string buttonName)
+	void ButtonClicked(GameObject buttonName)
 	{
-		switch (buttonName)
+		switch (buttonName.name)
 		{
 			case "Play":
 				titleScreen.ClickedPlay();
@@ -126,19 +126,19 @@ public class MenuButtonClick : MonoBehaviour
 				titleScreen.Restart();
 				break;
 			case "Blue":
-				settingsControl.ChangeTheme(SettingsControl.Theme.blue);
+				settingsControl.ChangeTheme(SettingsControl.Theme.blue, buttonName);
 				break;
 			case "Red":
-				settingsControl.ChangeTheme(SettingsControl.Theme.red);
+				settingsControl.ChangeTheme(SettingsControl.Theme.red, buttonName);
 				break;
 			case "Pink":
-				settingsControl.ChangeTheme(SettingsControl.Theme.pink);
+				settingsControl.ChangeTheme(SettingsControl.Theme.pink, buttonName);
 				break;
 			case "White":
-				settingsControl.ChangeTheme(SettingsControl.Theme.white);
+				settingsControl.ChangeTheme(SettingsControl.Theme.white, buttonName);
 				break;
 			case "Black":
-				settingsControl.ChangeTheme(SettingsControl.Theme.black);
+				settingsControl.ChangeTheme(SettingsControl.Theme.black, buttonName);
 				break;
 		}
 	}
